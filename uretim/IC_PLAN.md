@@ -1,0 +1,14 @@
+# 30 günlük içerik planı (6 Kasım - 5 Aralık 2026)
+
+Hedef: 5 Aralık'a kadar 1.000 takipçi. Her konudaki bilgi üretimden önce kaynaktan doğrulanır; doğrulanamayan durak değiştirilir.
+Kural: Bir video son 7 günün ortalamasının 2 katından fazla izlenirse sıradaki boş güne devamını koy. Plan buna göre kayabilir.
+Metricool ücretsiz planı ayda 20 paylaşım: 20 Kasım'a kadar Buffer'ı test et, geçilemezse Özgür'e sor.
+
+- 6-8 Kasım: Bölüm 4, Bölüm 5, Hardaliye
+- 9-13 Kasım, Trakya Lezzet Rotası: Tekirdağ köftesi, Edirne ciğeri, Kırklareli peyniri, Malkara ve Uzunköprü gibi Trakya ürünleri, finalde 3 günlük lezzet rotası
+- 14-19 Kasım, Trakya'nın Saklı Doğası: İğneada Longoz Ormanları, Kıyıköy, Dupnisa Mağarası, Istranca köyleri, Saros Körfezi, finalde en güzel 5 durak
+- 20-25 Kasım, Balkan Rotası: Üsküp (Taş Köprü, Eski Çarşı), Ohri Gölü, Prizren, Priştine, Berat ve Ergiri (Arnavutluk), final harita. Trakya'dan batıya yolculuk gibi anlatılır. Siyasi tartışma ve sınır yorumu yok; tarih ve kültür tarafsız anlatılır. Vize bilgisi verilecekse güncel kaynaktan doğrulanır.
+- 26-30 Kasım, Çiçeklerin Yolu: lale, lavanta, gül, safran, kardelen; Çiçekli Patikalar temasını güçlendirir
+- 1-5 Aralık, Kış Rotaları: Kartalkaya/Abant, Sarıkamış, Erzurum, Kapadokya karda, Doğu Ekspresi
+
+Her video: 40-60 sn, masal haritası tarzı, sonunda sıradaki durak merakı, kaydetmeye değer bir bilgi ve tek yorum sorusu.
