@@ -4,7 +4,8 @@ Hedef: 5 Aralık'a kadar 1.000 takipçi. Her konudaki bilgi üretimden önce kay
 Kural: Bir video son 7 günün ortalamasının 2 katından fazla izlenirse sıradaki boş güne devamını koy. Plan buna göre kayabilir.
 Metricool ücretsiz planı ayda 20 paylaşım: 20 Kasım'a kadar Buffer'ı test et, geçilemezse Özgür'e sor.
 
-- 6-8 Kasım: Bölüm 4, Bölüm 5, Hardaliye
+- 6-9 Kasım: Bölüm 4 (6), Bölüm 5 (7), ek bölüm rota videosu (8), Hardaliye (9)
+- Not: 8 Kasım ek bölümü sonrası takvim 1 gün kaydı; her serinin ilk günü aşağıdakinden 1 gün sonra başlar, Lezzet Rotası 10 Kasım'da başlar.
 - 9-13 Kasım, Trakya Lezzet Rotası: Tekirdağ köftesi, Edirne ciğeri, Kırklareli peyniri, Malkara ve Uzunköprü gibi Trakya ürünleri, finalde 3 günlük lezzet rotası
 - 14-19 Kasım, Trakya'nın Saklı Doğası: İğneada Longoz Ormanları, Kıyıköy, Dupnisa Mağarası, Istranca köyleri, Saros Körfezi, finalde en güzel 5 durak
 - 20-25 Kasım, Balkan Rotası: Üsküp (Taş Köprü, Eski Çarşı), Ohri Gölü, Prizren, Priştine, Berat ve Ergiri (Arnavutluk), final harita. Trakya'dan batıya yolculuk gibi anlatılır. Siyasi tartışma ve sınır yorumu yok; tarih ve kültür tarafsız anlatılır. Vize bilgisi verilecekse güncel kaynaktan doğrulanır.
