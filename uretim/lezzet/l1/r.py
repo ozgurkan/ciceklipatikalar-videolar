@@ -17,7 +17,7 @@ def s_yer(t):
     mark(im); return im
 def s_et(t):
     k='et'; x,y=P['tek']; im,m=cam(x,y,.45); banner(im,"Ne giriyor?",None,y=320,sz=84); card(im,110,600,970,1340)
-    T(im,"Trakya'da yetişen dana eti",540,700,46,INK,LORA,a=clamp(t/.3))
+    T(im,"Tekirdağ'da yetişen genç dana eti",540,700,46,INK,LORA,a=clamp(t/.3))
     items=["Bayat ekmek","Soğan","Sarımsak","Kimyon"]
     for i,n in enumerate(items):
         s0=ct(k,1)+i*.45

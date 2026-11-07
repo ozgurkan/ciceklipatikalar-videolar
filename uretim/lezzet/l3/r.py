@@ -35,7 +35,7 @@ def s_kirk(t):
     for i in range(4):
         bx=sx-160+i*100; ink_poly(im,[(bx-70,sy+40),(bx+70,sy+40),(bx,sy-90-20*(i%2))],(120,132,90),w=3)
     sx,sy=m(*P['kir']); pin(im,sx,sy,t)
-    if t>=c[1][0]-.05: chip(im,"Tescil: 2021",540,1300,52,back((t-c[1][0]+.05)/.25),fill=GREEN)
+    if t>=c[1][0]-.05: chip(im,"Tescil: 2020",540,1300,52,back((t-c[1][0]+.05)/.25),fill=GREEN)
     mark(im); return im
 def s_cta(t):
     k='cta'; x,y=PT(41.35,26.95); im,m=cam(x,y,.42); banner(im,"Sen hangisini denedin?",None,y=320,sz=72); card(im,160,620,920,1420)

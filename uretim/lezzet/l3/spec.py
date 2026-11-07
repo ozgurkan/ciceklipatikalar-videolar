@@ -10,7 +10,7 @@ SEGS={
            ("Bir kelle en az 11 kilo",["Bir kelle, en az on bir kilo."],["kelle","on bir","kilo"],1.3,.22),
            ("Evliya Çelebi de Malkara'yı kaşarıyla anmış.",["Evliya Çelebi de, Malkara'yı kaşarıyla anmış."],["evliya","malkara","kaşarıyla"],1.28,.4)],
 "kirk":[("Kırklareli peyniri ise Istranca Dağları'nın otlarıyla anılır.",["Kırklareli peyniri ise, Istranca Dağları'nın otlarıyla anılır."],["kırklareli","ıstranca","otlarıyla"],1.26,.2),
-        ("2021'de tescillendi.",["İki bin yirmi birde tescillendi."],["iki bin yirmi bir","tescillendi"],1.3,.45)],
+        ("2020'de tescillendi.",["İki bin yirmide tescillendi."],["iki bin yirmi","tescillendi"],1.3,.45)],
 "cta":[("Sen hangisini denedin?",["Sen hangisini denedin?"],["hangisini","denedin"],1.3,.2),
        ("Yorumlara yaz.",["Yorumlara yaz."],["yaz"],1.25,.3),
        ("Yarın Trakya'nın az bilinen iki lezzeti. Takip et.",["Yarın, Trakya'nın az bilinen iki lezzeti. Takip et."],["az bilinen","lezzeti","takip"],1.28,.1)],

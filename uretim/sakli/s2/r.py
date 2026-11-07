@@ -36,14 +36,14 @@ def s_sur(t):
 def s_manastir(t):
     k='manastir'; x,y=Q['kiy']; im,m=cam(x,y,.45); banner(im,"Kayaya oyulmuş",None,y=320,sz=84); card(im,90,620,990,1340)
     cave_monastery(im,540,1120,1.3)
-    if t>=ct(k,1)-.05: chip(im,"Aya Nikola · 6. yüzyıl",540,1230,46,back((t-ct(k,1)+.05)/.25),fill=RUST)
+    if t>=ct(k,1)-.05: chip(im,"Aya Nikola · Bizans dönemi",540,1230,46,back((t-ct(k,1)+.05)/.25),fill=RUST)
     return im
 def s_cam(t):
     k='cam'; x,y=Q['kiy']; im,m=cam(x,y,.45); banner(im,"Kasatura Koyu",None,y=320,sz=84); card(im,90,620,990,1340)
     water(im,100,1100,980,1330,t)
     for i in range(9):
         if t>=i*.12: pine(im,170+i*92,1090-(i%2)*40,1.1)
-    T(im,"Rumeli'de kendiliğinden yetişen",540,740,40,INK,LORA,a=clamp(t/.3)); T(im,"tek karaçam korusu",540,800,48,RUST,LORA,a=clamp(t/.3))
+    T(im,"Trakya'nın tek doğal",540,740,44,INK,LORA,a=clamp(t/.3)); T(im,"karaçam korusu",540,800,48,RUST,LORA,a=clamp(t/.3))
     return im
 def s_cta(t):
     k='cta'; x,y=Q['kiy']; im,m=cam(x,y,.42); banner(im,"Duymuş muydun?",None,y=320,sz=84); town(im,t)

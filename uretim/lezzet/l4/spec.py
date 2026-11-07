@@ -1,9 +1,9 @@
 OUTRO=6.5
 SEGS={
-"hook":[("Kırk bir baharatlı bir helva duydun mu?",["Kırk bir baharatlı bir helva duydun mu?"],["kırk bir","baharatlı","helva"],1.28,.45)],
+"hook":[("39 baharatlı bir helva duydun mu?",["Otuz dokuz baharatlı bir helva duydun mu?"],["otuz dokuz","baharatlı","helva"],1.28,.45)],
 "helva":[("Adı deva-i misk.",["Adı, devai misk."],["devai","misk"],1.32,.2),
          ("Edirne'de yapılıyor.",["Edirne'de yapılıyor."],["edirne","yapılıyor"],1.3,.2),
-         ("İçinde yumurta akı, bal ve 41 baharat var.",["İçinde yumurta akı, bal ve kırk bir baharat var."],["yumurta","bal","kırk bir","baharat"],1.28,.22),
+         ("Tescil belgesine göre içinde yumurta akı ve 39 çeşit baharat var.",["Tescil belgesine göre, içinde yumurta akı ve otuz dokuz çeşit baharat var."],["tescil","yumurta","otuz dokuz","baharat"],1.28,.22),
          ("Osmanlı döneminde halka dağıtıldığı anlatılıyor.",["Osmanlı döneminde halka dağıtıldığı anlatılıyor."],["osmanlı","halka","dağıtıldığı"],1.28,.2),
          ("2021'de coğrafi işaret aldı.",["İki bin yirmi birde coğrafi işaret aldı."],["iki bin yirmi bir","coğrafi"],1.3,.45)],
 "ahmet":[("İkinci durak Lüleburgaz'daki Ahmetbey.",["İkinci durak, Lüleburgaz'daki Ahmetbey."],["lüleburgaz","ahmetbey"],1.3,.22),

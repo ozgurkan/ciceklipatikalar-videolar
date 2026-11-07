@@ -8,7 +8,7 @@ SEGS={
          ("1444'te açıldı.",["Bin dört yüz kırk dörtte açıldı."],["bin dört yüz kırk dört","açıldı"],1.3,.4)],
 "olcu":[("İlk yapıldığında 174 kemeri vardı.",["İlk yapıldığında, yüz yetmiş dört kemeri vardı."],["yüz yetmiş dört","kemeri"],1.28,.22),
         ("Boyu bir kilometreyi geçiyor.",["Boyu, bir kilometreyi geçiyor."],["boyu","bir kilometreyi"],1.3,.22),
-        ("1973'e kadar Türkiye'nin en uzun köprüsüydü.",["Bin dokuz yüz yetmiş üçe kadar, Türkiye'nin en uzun köprüsüydü."],["yetmiş üç","türkiye'nin","en uzun"],1.26,.4)],
+        ("Kitabesinde de 174 göz yazıyor.",["Kitabesinde de, yüz yetmiş dört göz yazıyor."],["kitabesinde","yüz yetmiş dört","göz"],1.28,.4)],
 "kabartma":[("Ayaklarında fil, aslan ve kuş kabartmaları var.",["Ayaklarında fil, aslan ve kuş kabartmaları var."],["fil","aslan","kuş","kabartmaları"],1.28,.2),
             ("Bir kısmı hâlâ görülebiliyor.",["Bir kısmı, hâlâ görülebiliyor."],["hâlâ","görülebiliyor"],1.3,.4)],
 "unesco":[("2015'te UNESCO Dünya Mirası Geçici Listesi'ne girdi.",["İki bin on beşte, UNESCO Dünya Mirası Geçici Listesi'ne girdi."],["iki bin on beş","unesco","geçici"],1.26,.45)],

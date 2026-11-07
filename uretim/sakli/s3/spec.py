@@ -6,7 +6,7 @@ SEGS={
 "nasil":[("Istranca Dağları'ndan inen dereler kıyıya alüvyon taşıdı.",["Istranca Dağları'ndan inen dereler, kıyıya alüvyon taşıdı."],["ıstranca","dereler","alüvyon"],1.26,.22),
          ("Mevsimlik taşkınlar bu su basar ormanı oluşturdu.",["Mevsimlik taşkınlar, bu su basar ormanı oluşturdu."],["taşkınlar","su basar","ormanı"],1.28,.4)],
 "gol":[("Milli parkın içinde beş göl var.",["Milli parkın içinde beş göl var."],["milli parkın","beş göl"],1.3,.2),
-       ("En büyüğü Mert Gölü.",["En büyüğü, Mert Gölü."],["en büyüğü","mert"],1.3,.2),
+       ("Erikli, Mert, Saka, Hamam ve Pedina",["Erikli, Mert, Saka, Hamam ve Pedina."],["erikli","mert","saka","hamam","pedina"],1.3,.2),
        ("Kumulları ve sazlıklarıyla nadir bir ekosistem.",["Kumulları ve sazlıklarıyla, nadir bir ekosistem."],["kumulları","sazlıklarıyla","ekosistem"],1.28,.4)],
 "park":[("2007'de milli park oldu.",["İki bin yedide milli park oldu."],["iki bin yedi","milli park"],1.3,.2),
         ("Alanı 3.000 hektardan fazla.",["Alanı, üç bin hektardan fazla.","Alanı üç bin hektardan geniş."],["üç bin","hektardan"],1.3,.45)],

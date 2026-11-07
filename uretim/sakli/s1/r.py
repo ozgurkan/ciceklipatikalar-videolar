@@ -16,7 +16,7 @@ def s_yer(t):
 def s_yapim(t):
     k='yapim'; x,y=Q['uzk']; im,m=cam(x,y,.45); banner(im,"II. Murad",None,y=320,sz=90); card(im,140,640,940,1330)
     s=back(t/.35); circle(im,540,900,150*max(s,.05),RUST); circle(im,540,900,122*max(s,.05),PAPER)
-    if s>.6: T(im,"1427",540,870,52,RUST,LORA); T(im,"1443",540,940,52,RUST,LORA)
+    if s>.6: T(im,"Bitiş",540,870,40,RUST,LORA); T(im,"1443",540,940,56,RUST,LORA)
     if t>=ct(k,1)-.05: chip(im,"Açılış: 1444",540,1180,56,back((t-ct(k,1)+.05)/.25),fill=GREEN)
     return im
 def s_olcu(t):
@@ -25,7 +25,7 @@ def s_olcu(t):
     stone_bridge(im,80,1000,900,24,1.,t)
     T(im,f"{n} kemer",540,730,84,RUST,LORA)
     if t>=c[1][0]-.05: chip(im,"Boyu 1 km'den uzun",540,1100,48,back((t-c[1][0]+.05)/.25),fill=INK)
-    if t>=c[2][0]-.05: chip(im,"1973'e kadar Türkiye'nin en uzunu",540,1230,40,back((t-c[2][0]+.05)/.25),fill=GREEN)
+    if t>=c[2][0]-.05: chip(im,"Kitabede: 174 göz",540,1230,44,back((t-c[2][0]+.05)/.25),fill=GREEN)
     return im
 def s_kabartma(t):
     k='kabartma'; x,y=Q['uzk']; im,m=cam(x,y,.45); banner(im,"Taştaki hayvanlar",None,y=320,sz=80); card(im,90,620,990,1340)

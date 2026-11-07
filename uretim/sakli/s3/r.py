@@ -27,12 +27,12 @@ def s_nasil(t):
     return im
 def s_gol(t):
     k='gol'; c=TM[k]['chunks']; x,y=Q['ign']; im,m=cam(x,y,.45); banner(im,"5 göl",None,y=320,sz=90); card(im,90,620,990,1340)
-    d=ImageDraw.Draw(im); L=[("Mert",540,850,230,90),("Erikli",270,1060,110,50),("Hamam",800,1060,90,40),("Pedina",420,1190,70,30),("Saka",680,1200,50,24)]
+    d=ImageDraw.Draw(im); L=[("Erikli",300,860,120,52),("Mert",780,860,120,52),("Saka",540,1010,120,52),("Hamam",300,1160,120,52),("Pedina",780,1160,120,52)]
     for i,(n,gx,gy,rx,ry) in enumerate(L):
         if t>=i*.3:
             s=back((t-i*.3)/.3); d.ellipse([gx-rx*s,gy-ry*s,gx+rx*s,gy+ry*s],fill=WATER,outline=INK,width=3)
-            if s>.8: T(im,n,gx,gy,34 if rx>60 else 28,INK,LORA)
-    if t>=c[1][0]-.05: chip(im,"En büyüğü: Mert Gölü",540,720,44,back((t-c[1][0]+.05)/.25),fill=RUST)
+            if s>.8: T(im,n,gx,gy,34,INK,LORA)
+    if t>=c[1][0]-.05: chip(im,"5 göl, 5 isim",540,720,44,back((t-c[1][0]+.05)/.25),fill=RUST)
     if t>=c[2][0]-.05: T(im,"Kumul · sazlık · orman",540,1285,40,INK,LORAI,a=clamp((t-c[2][0])/.3))
     return im
 def s_park(t):

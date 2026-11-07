@@ -4,7 +4,7 @@ SEGS={
         ("Neden?",["Neden?","Peki, neden?"],["neden"],1.3,.45)],
 "yer":[("Burası Tekirdağ, Marmara'nın kıyısı.",["Burası Tekirdağ, Marmara'nın kıyısı.","Burası Tekirdağ. Marmara'nın kıyısı."],["tekirdağ","marmara"],1.28,.2),
        ("Köftesi bütün Türkiye'de biliniyor.",["Köftesi bütün Türkiye'de biliniyor."],["köftesi","biliniyor"],1.28,.4)],
-"et":[("Tescil belgesine göre Trakya'da yetişen dana eti kullanılıyor.",["Tescil belgesine göre, Trakya'da yetişen dana eti kullanılıyor."],["tescil","trakya","dana"],1.26,.22),
+"et":[("Tescil belgesine göre Tekirdağ'da yetişen genç dana eti kullanılıyor.",["Tescil belgesine göre, Tekirdağ'da yetişen genç dana eti kullanılıyor."],["tescil","tekirdağ","genç","dana"],1.26,.22),
       ("İçine bayat ekmek, soğan, sarımsak ve kimyon giriyor.",["İçine bayat ekmek, soğan, sarımsak ve kimyon giriyor."],["ekmek","soğan","sarımsak","kimyon"],1.28,.4)],
 "dinlen":[("Hamur soğukta en az 18 saat dinleniyor.",["Sonra hamur, soğukta en az on sekiz saat dinleniyor."],["hamur","on sekiz","dinleniyor"],1.28,.22),
           ("Belgeye göre lezzetin sırlarından biri bu bekleyiş.",["Belgeye göre lezzetin sırlarından biri, bu bekleyiş."],["lezzetin","bekleyiş"],1.28,.4)],

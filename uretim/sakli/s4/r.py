@@ -23,7 +23,7 @@ def s_delta(t):
     if t>=ct(k,1)-.05: chip(im,"Göl · sazlık · orman",540,1300,46,back((t-ct(k,1)+.05)/.25),fill=GREEN)
     mark(im); return im
 def s_kus(t):
-    k='kus'; c=TM[k]['chunks']; x,y=Q['gal']; im,m=cam(x,y,.45); banner(im,"200+ kuş türü",None,y=320,sz=84); lake(im,t,4,t>=c[2][0]-.05)
+    k='kus'; c=TM[k]['chunks']; x,y=Q['gal']; im,m=cam(x,y,.45); banner(im,"150+ kuş türü",None,y=320,sz=84); lake(im,t,4,t>=c[2][0]-.05)
     if t>=c[1][0]-.05:
         p=clamp((t-c[1][0])/2.5); d=ImageDraw.Draw(im)
         for i in range(6):

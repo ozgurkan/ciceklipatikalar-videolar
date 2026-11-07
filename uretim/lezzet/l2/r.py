@@ -4,11 +4,11 @@ exec(open('/home/claude/lezzet/head.py').read())
 SER="Trakya Lezzet Rotası · 2"
 def s_hook(t):
     k='hook'; x,y=P['edi']; im,m=cam(x,y,.5+.01*t); banner(im,"Edirne Tava Ciğeri",SER,y=320,sz=80)
-    card(im,140,640,940,1330); T(im,"< 1 mm",540,760,96,RUST,LORA,scale=back(t/.4))
+    card(im,140,640,940,1330); T(im,"Kâğıt inceliği",540,760,80,RUST,LORA,scale=back((t+.3)/.4))
     for i in range(5):
         liver_slice(im,540,900+i*46,2.3,0.,.04*math.sin(t*2+i))
     if t>=ct(k,1)-.05:
-        s=back((t-ct(k,1)+.05)/.25); chip(im,"~2 dakika",540,1220,54,s)
+        s=back((t-ct(k,1)+.05)/.25); chip(im,"Kızgın yağda",540,1220,54,s)
     mark(im); return im
 def s_yer(t):
     k='yer'; x,y=P['edi']; im,m=cam(x,y,.8+.03*t); banner(im,"Edirne","Meriç ve Tunca'nın şehri",y=320,sz=88)

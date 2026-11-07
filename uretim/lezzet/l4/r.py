@@ -4,9 +4,9 @@ exec(open('/home/claude/lezzet/head.py').read())
 SER="Trakya Lezzet Rotası · 4"
 def s_hook(t):
     k='hook'; x,y=P['edi']; im,m=cam(x,y,.45+.01*t); banner(im,"Az bilinen 2 lezzet",SER,y=320,sz=80)
-    card(im,140,640,940,1330); n=41
+    card(im,140,640,940,1330); n=39
     T(im,f"{n}",540,800,150,RUST,LORA,scale=back(t/.4)); T(im,"baharat",540,920,56,INK,LORA)
-    helva_bowl(im,540,1150,1.1,t,n/41)
+    helva_bowl(im,540,1150,1.1,t,1.)
     mark(im); return im
 def s_helva(t):
     k='helva'; c=TM[k]['chunks']
@@ -15,7 +15,7 @@ def s_helva(t):
         sx,sy=m(x,y); pin(im,sx,sy,t); return im
     x,y=P['edi']; im,m=cam(x,y,.45); banner(im,"Deva-i misk helvası",None,y=320,sz=78); card(im,110,600,970,1340)
     helva_bowl(im,540,800,1.0,t,1.)
-    for i,n in enumerate(["Yumurta akı","Bal","41 baharat"]):
+    for i,n in enumerate(["Yumurta akı","Şeker","39 baharat"]):
         s0=c[2][0]+i*.4
         if t>=s0: chip(im,n,270+i*270,1010,42,back((t-s0)/.25),fill=[CLAY,GOLD,RUST][i])
     if t>=c[3][0]-.05: T(im,"Osmanlı'da halka dağıtıldığı anlatılır",540,1130,38,INK,LORAI,a=clamp((t-c[3][0])/.3))
