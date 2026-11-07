@@ -2,20 +2,127 @@
 import os; os.chdir('/home/claude/ata')
 exec(open('/home/claude/sakli/shead.py').read())
 AN=Image.open('anatolia.png').convert('RGB'); AN.load()
-S=218.6; LON0=19.5; LAT0=40.5+2880/S
-CC=math.cos(math.radians(40.5))
+S=218.6; LON0=19.5; LAT0=40.5+2880/S; CC=math.cos(math.radians(40.5))
 def AP(lat,lon): return ((lon-LON0)*S*CC,(LAT0-lat)*S)
 def cam2(cx,cy,z):
-    z=max(z,.334); w,h=W/z,H/z; x0,y0=cx-w/2,cy-h/2
+    w,h=W/z,H/z; x0,y0=cx-w/2,cy-h/2
     x0=max(0,min(x0,AN.width-w)); y0=max(0,min(y0,AN.height-h))
     im=AN.crop((int(x0),int(y0),int(x0+w),int(y0+h))).resize((W,H),Image.BILINEAR)
     return im,lambda px,py:((px-x0)*z,(py-y0)*z)
 STOPS=[('selanik',40.64,22.94,'Selanik','1881','Doğduğu şehir'),('manastir',41.03,21.33,'Manastır','1896','Askerî idadi yılları'),
        ('canakkale',40.24,26.33,'Çanakkale','1915','Anafartalar'),('samsun',41.29,36.33,'Samsun','1919','Kurtuluşun ilk adımı'),
-       ('ankara',39.93,32.86,'Ankara','1923','Cumhuriyet'),('istanbul',41.04,29.0,'İstanbul','1938','Dolmabahçe')]
-RED=(200,16,32); DARK=(28,24,22)
-def dim(im,a):
-    ov=Image.new('RGB',im.size,DARK); return Image.blend(im,ov,a)
+       ('ankara',39.93,32.86,'Ankara','1923','Cumhuriyetin ilanı'),('istanbul',41.04,29.0,'İstanbul','1938','Dolmabahçe')]
+RED=(196,18,34); CREAM=(244,236,214); NIGHT=(34,30,40)
+_vig=None
+def vignette():
+    global _vig
+    if _vig is None:
+        y,x=np.mgrid[0:H,0:W]; r=np.sqrt(((x-W/2)/(W*.62))**2+((y-H/2)/(H*.62))**2); _vig=np.clip(1-.55*np.clip(r-.45,0,1)**1.3,0,1).astype(np.float32)
+    return _vig
+def grade(im,t,sep=.35,dust=True):
+    a=np.asarray(im).astype(np.float32); g=a.mean(2,keepdims=True)
+    sepia=np.concatenate([g*1.07+12,g*.98+4,g*.82-6],2); a=a*(1-sep)+sepia*sep
+    a*=vignette()[...,None]; im=Image.fromarray(np.clip(a,0,255).astype(np.uint8))
+    if dust:
+        rs=random.Random(7)
+        for i in range(28):
+            x0=rs.uniform(0,W); y0=rs.uniform(0,H); sp=rs.uniform(8,22)
+            x=(x0+math.sin(t*.4+i)*30)%W; y=(y0-t*sp)%H; circle(im,x,y,rs.uniform(2,4.5),(255,240,210),.25+.2*math.sin(t+i))
+    return im
+def petals(im,t,n=18,seed=3):
+    rs=random.Random(seed)
+    for i in range(n):
+        x0=rs.uniform(60,W-60); sp=rs.uniform(60,120); ph=rs.uniform(0,10)
+        y=((t+ph)*sp)%(H+200)-100; x=x0+40*math.sin((t+ph)*1.3)
+        ang=(t+ph)*2; r=14
+        pts=[(x+math.cos(ang)*r,y+math.sin(ang)*r*.5),(x+math.cos(ang+2.4)*r*.6,y+math.sin(ang+2.4)*r*.4),(x+math.cos(ang+3.14)*r,y+math.sin(ang+3.14)*r*.5),(x+math.cos(ang+4)*r*.6,y+math.sin(ang+4)*r*.4)]
+        poly(im,pts,(178,24,40))
+def zoomed(im,s):
+    if s<=1.001: return im
+    w,h=W/s,H/s; return im.crop((int((W-w)/2),int((H-h)/2),int((W+w)/2),int((H+h)/2))).resize((W,H),Image.BILINEAR)
+def sky(top=(52,46,62),bot=(196,150,110)):
+    g=np.linspace(0,1,H)[:,None,None]; a=np.array(top)[None,None,:]*(1-g)+np.array(bot)[None,None,:]*g
+    return Image.fromarray(np.repeat(a,W,1).astype(np.uint8))
+def tower(im,cx,base,t,s=1.):
+    d=ImageDraw.Draw(im); C=(222,210,186); D=(170,156,132)
+    d.rectangle([cx-120*s,base-300*s,cx+120*s,base],fill=C,outline=INK,width=4)
+    d.rectangle([cx-95*s,base-760*s,cx+95*s,base-300*s],fill=C,outline=INK,width=4)
+    for i in range(3): d.rectangle([cx-130*s,base-300*s-i*6*s-12*s,cx+130*s,base-300*s-i*6*s],fill=D)
+    d.rectangle([cx-75*s,base-1000*s,cx+75*s,base-760*s],fill=C,outline=INK,width=4)
+    d.polygon([(cx-90*s,base-1000*s),(cx+90*s,base-1000*s),(cx,base-1160*s)],fill=(120,128,120),outline=INK)
+    for k in (-1,1): d.chord([cx+k*55*s-30*s,base-260*s,cx+k*55*s+30*s,base-120*s],180,360,fill=(90,80,70)); d.rectangle([cx+k*55*s-30*s,base-190*s,cx+k*55*s+30*s,base-30*s],fill=(90,80,70))
+    clock(im,cx,base-560*s,105*s,t)
+def clock(im,cx,cy,R,t):
+    d=ImageDraw.Draw(im); d.ellipse([cx-R-12,cy-R-12,cx+R+12,cy+R+12],fill=(176,140,70),outline=INK,width=3); d.ellipse([cx-R,cy-R,cx+R,cy+R],fill=(248,240,218),outline=INK,width=4)
+    for i in range(12):
+        a=i*math.pi/6; d.line([(cx+math.sin(a)*R*.8,cy-math.cos(a)*R*.8),(cx+math.sin(a)*R*.93,cy-math.cos(a)*R*.93)],fill=INK,width=max(3,int(R/30)))
+    hm=(9+5/60)/12*2*math.pi; mm=5/60*2*math.pi
+    d.line([(cx,cy),(cx+math.sin(hm)*R*.5,cy-math.cos(hm)*R*.5)],fill=INK,width=max(6,int(R/14)))
+    d.line([(cx,cy),(cx+math.sin(mm)*R*.78,cy-math.cos(mm)*R*.78)],fill=INK,width=max(4,int(R/22)))
+    sec=min(t,1.4); sa=(52+sec*5)/60*2*math.pi
+    d.line([(cx,cy),(cx+math.sin(sa)*R*.86,cy-math.cos(sa)*R*.86)],fill=RED,width=3); circle(im,cx,cy,max(6,R/12),INK)
+def s_hook(t):
+    k='hook'; c=TM[k]['chunks']; im=sky()
+    d=ImageDraw.Draw(im); water(im,0,1500,W,H,t,(88,104,120))
+    tower(im,540,1500,t,1.0)
+    for x in (120,960): d.rectangle([x-110,1260,x+110,1500],fill=(200,188,164),outline=INK,width=3)
+    im=zoomed(im,1+.04*t)
+    T(im,"10 Kasım 1938 · 09.05",540,230,62,CREAM,LORA,a=clamp((t+.4)/.4))
+    if t>=c[1][0]-.05: T(im,"Dolmabahçe Sarayı",540,310,44,(230,214,180),LORAI,a=clamp((t-c[1][0])/.4))
+    return grade(im,t,.25)
+def s_iz(t):
+    cx,cy=AP(40.6,29.2); im,m=cam2(cx,cy,.36-.01*t)
+    T(im,"Atatürk'ün izinde",540,300,84,INK,LORA,a=clamp(t/.5))
+    pts=[m(*AP(s[1],s[2])) for s in STOPS]
+    for i,(x,y) in enumerate(pts):
+        if t>=.3+i*.25: circle(im,x,y,12,RED,.7)
+    return grade(im,t)
+def icon(im,key,cx,cy,t):
+    d=ImageDraw.Draw(im)
+    if key=='selanik':
+        ink_poly(im,[(cx-110,cy+80),(cx+110,cy+80),(cx+110,cy-30),(cx-110,cy-30)],(226,170,170)); ink_poly(im,[(cx-130,cy-30),(cx+130,cy-30),(cx,cy-110)],(150,70,50))
+        ink_poly(im,[(cx-50,cy-30),(cx+50,cy-30),(cx+60,cy+20),(cx-60,cy+20)],(240,200,200))
+        for x in (-80,-20,40,80): d.rectangle([cx+x-12,cy+30,cx+x+12,cy+66],fill=(90,80,90))
+    elif key=='manastir':
+        ink_poly(im,[(cx-140,cy+80),(cx+140,cy+80),(cx+140,cy-40),(cx-140,cy-40)],(222,208,176))
+        for i in range(6): d.rectangle([cx-120+i*46,cy-20,cx-100+i*46,cy+20],fill=(90,90,100))
+        d.rectangle([cx-24,cy+30,cx+24,cy+80],fill=(110,74,44)); d.line([(cx,cy-40),(cx,cy-130)],fill=INK,width=4); d.rectangle([cx,cy-130,cx+60,cy-92],fill=RED)
+    elif key=='canakkale':
+        water(im,cx-160,cy+20,cx+160,cy+90,t,(110,150,170))
+        ink_poly(im,[(cx-160,cy+30),(cx-80,cy-60),(cx,cy-20),(cx+80,cy-90),(cx+160,cy+30)],(150,140,96))
+        for i in range(9): x=cx-140+i*35; circle(im,x,cy+5-(i%3)*12,9,(200,30,36))
+    elif key=='samsun':
+        water(im,cx-160,cy+40,cx+160,cy+90,t,(110,150,170))
+        ink_poly(im,[(cx-140,cy+40),(cx+140,cy+40),(cx+110,cy+80),(cx-110,cy+80)],(60,56,56))
+        ink_poly(im,[(cx-90,cy+40),(cx+80,cy+40),(cx+80,cy),(cx-90,cy)],(236,228,210)); d.rectangle([cx-10,cy-80,cx+20,cy],fill=(60,56,56))
+        for i in range(3): ph=(t*.5+i/3)%1; circle(im,cx+5+ph*40,cy-90-ph*90,12+ph*16,(200,196,190),1-ph)
+    elif key=='ankara':
+        ink_poly(im,[(cx-150,cy+80),(cx+150,cy+80),(cx+150,cy-20),(cx-150,cy-20)],(214,176,140))
+        ink_poly(im,[(cx-165,cy-20),(cx+165,cy-20),(cx,cy-80)],(150,90,60))
+        for i in range(5): d.rectangle([cx-120+i*60,cy,cx-100+i*60,cy+60],fill=(240,232,214),outline=INK)
+    else:
+        ink_poly(im,[(cx-160,cy+80),(cx+160,cy+80),(cx+160,cy-10),(cx-160,cy-10)],(232,224,206))
+        for i in range(8): d.chord([cx-150+i*38,cy+10,cx-122+i*38,cy+70],180,360,fill=(120,120,130))
+        d.rectangle([cx-26,cy-120,cx+26,cy-10],fill=(232,224,206),outline=INK,width=2); clock(im,cx,cy-80,20,9)
+def mkstop(i):
+    key,lat,lon,name,year,sub=STOPS[i]
+    def f(t):
+        p=ease(clamp(t/1.4)); cur=AP(lat,lon); prv=AP(STOPS[i-1][1],STOPS[i-1][2]) if i else AP(40.6,29.2)
+        u=ease(clamp(t/1.8)); cx=prv[0]+(cur[0]-prv[0])*u*.5+(AP(40.6,29.2)[0]-prv[0])*0; cy=prv[1]+(cur[1]-prv[1])*u*.5
+        mid=(AP(40.6,29.2)); cx=mid[0]*.85+cur[0]*.15; cy=mid[1]+480
+        im,m=cam2(cx,cy,.36+.025*clamp(t/4))
+        pts=[m(*AP(s[1],s[2])) for s in STOPS]
+        if i: route(im,pts[:i],1,RED,9); route(im,[pts[i-1],pts[i]],p,RED,9)
+        for j in range(i+1):
+            if j<i or p>.95: x,y=pts[j]; circle(im,x,y,15,RED); circle(im,x,y,6,CREAM)
+        if p>.9: pin(im,*pts[i],t,None,RED)
+        T(im,"Atatürk'ün izinde",540,250,60,INK,LORA)
+        a=back((t-.15)/.35)
+        card(im,160,1060,920,1580)
+        icon(im,key,540,1200,t)
+        T(im,year,540,1370,76,RED,LORA,scale=a); T(im,name,540,1455,54,INK,LORA,a=clamp((t-.3)/.3)); T(im,sub,540,1525,40,(100,76,50),LORAI,a=clamp((t-.5)/.3))
+        return grade(im,t)
+    return f
 def flag(w,t):
     h=int(w*2/3); f=Image.new('RGB',(w,h),RED); d=ImageDraw.Draw(f); G=h
     cx=.5*G; d.ellipse([cx-.25*G,G/2-.25*G,cx+.25*G,G/2+.25*G],fill=(255,255,255))
@@ -24,91 +131,41 @@ def flag(w,t):
     for i in range(10):
         a=math.pi+i*math.pi/5; rr=r if i%2==0 else r*.382; pts.append((sx+rr*math.cos(a),G/2+rr*math.sin(a)))
     d.polygon(pts,fill=(255,255,255))
-    a=np.asarray(f); out=np.zeros((h+40,w,3),np.uint8)+0
+    a=np.asarray(f).astype(np.float32); out=np.zeros((h+60,w,3),np.float32); m=np.zeros((h+60,w),np.uint8)
     for x in range(w):
-        off=int(14*math.sin(x/w*5-t*3)*(x/w)); out[20+off:20+off+h,x]=a[:,x]
-    sh=np.ones((h+40,w))*1.0
-    for x in range(w): sh[:,x]=.85+.15*math.sin(x/w*5-t*3+1)
-    out=(out*sh[...,None]).astype(np.uint8)
-    m=np.zeros((h+40,w),np.uint8)
-    for x in range(w):
-        off=int(14*math.sin(x/w*5-t*3)*(x/w)); m[20+off:20+off+h,x]=255
-    return Image.fromarray(out),Image.fromarray(m)
+        ph=x/w*6-t*3; off=int(18*math.sin(ph)*(x/w)); sh=.82+.18*math.sin(ph+1.2)
+        out[30+off:30+off+h,x]=a[:,x]*sh; m[30+off:30+off+h,x]=255
+    return Image.fromarray(out.astype(np.uint8)),Image.fromarray(m)
 def put_flag(im,x,y,w,t):
-    f,m=flag(w,t); ImageDraw.Draw(im).line([(x-6,y-10),(x-6,y+f.height+90)],fill=(200,200,200),width=10); im.paste(f,(int(x),int(y)),m)
-def carnation(im,x,y,s=1):
-    d=ImageDraw.Draw(im); d.line([(x,y),(x+6*s,y+170*s)],fill=(70,110,60),width=max(2,int(6*s)))
-    rs=random.Random(int(x))
-    for i in range(14):
-        a=rs.uniform(0,2*math.pi); r=rs.uniform(4,26)*s; circle(im,x+math.cos(a)*r,y-8*s+math.sin(a)*r*.7,14*s,(186+rs.randint(-20,20),20,36))
-def clock(im,cx,cy,R,t):
-    d=ImageDraw.Draw(im); d.ellipse([cx-R-14,cy-R-14,cx+R+14,cy+R+14],fill=(176,140,70)); d.ellipse([cx-R,cy-R,cx+R,cy+R],fill=(246,238,214),outline=INK,width=6)
-    for i in range(12):
-        a=i*math.pi/6; d.line([(cx+math.sin(a)*R*.82,cy-math.cos(a)*R*.82),(cx+math.sin(a)*R*.94,cy-math.cos(a)*R*.94)],fill=INK,width=8)
-    hm=(9+5/60)/12*2*math.pi; mm=5/60*2*math.pi
-    d.line([(cx,cy),(cx+math.sin(hm)*R*.5,cy-math.cos(hm)*R*.5)],fill=INK,width=16)
-    d.line([(cx,cy),(cx+math.sin(mm)*R*.78,cy-math.cos(mm)*R*.78)],fill=INK,width=10)
-    sec=min(t,1.4); sa=(50+sec*6)/60*2*math.pi if t<1.4 else (50+1.4*6)/60*2*math.pi
-    d.line([(cx,cy),(cx+math.sin(sa)*R*.86,cy-math.cos(sa)*R*.86)],fill=RED,width=4); circle(im,cx,cy,14,INK)
-def s_hook(t):
-    k='hook'; im=Image.new('RGB',(W,H),(232,220,192)); im=dim(im,.55)
-    clock(im,540,860,300,t)
-    T(im,"Saatler 09.05'te durdu",540,350,76,(240,230,206),LORA)
-    if t>=ct(k,1)-.05: T(im,"10 Kasım 1938",540,1290,64,(240,230,206),LORA,a=clamp((t-ct(k,1))/.4)); T(im,"Dolmabahçe",540,1370,44,(214,200,170),LORAI,a=clamp((t-ct(k,1))/.4))
-    return im
-def base(t,upto,prog,focus=None,z=.334):
-    if focus is None: cx,cy=AP(40.6,29.4)
-    else: cx,cy=AP(*focus)
-    im,m=cam2(cx,cy,z); pts=[m(*AP(s[1],s[2])) for s in STOPS]
-    seg=pts[:upto+1]
-    if upto>=1:
-        full=pts[:upto]; route(im,full,1,RED,9)
-        if prog<1: route(im,[pts[upto-1],pts[upto]],prog,RED,9)
-        else: route(im,[pts[upto-1],pts[upto]],1,RED,9)
-    for i in range(min(upto+1,len(pts))):
-        if i<upto or prog>.95 or upto==0:
-            x,y=pts[i]; circle(im,x,y,16,RED); circle(im,x,y,7,(250,240,220))
-    return im,pts
-def s_iz(t):
-    im,pts=base(t,0,0); im=dim(im,.18); T(im,"Atatürk'ün izinde",540,330,80,INK,LORA,a=clamp(t/.5))
-    for s in STOPS:
-        pass
-    return im
-def mkstop(i):
-    key,lat,lon,name,year,sub=STOPS[i]
-    def f(t):
-        p=ease(clamp(t/1.6)); fz=(.334+.2*ease(clamp((t-.2)/2.5)))
-        cx=AP(lat,lon); prevc=AP(STOPS[i-1][1],STOPS[i-1][2]) if i>0 else cx
-        im,pts=base(t,i,p,None,.334)
-        x,y=pts[i]
-        if p>.9: pin(im,x,y,t,None,RED)
-        card(im,170,1250,910,1540); T(im,year,540,1320,72,RED,LORA,scale=back((t-.2)/.35)); T(im,name,540,1410,52,INK,LORA,a=clamp((t-.3)/.3)); T(im,sub,540,1480,40,(100,76,50),LORAI,a=clamp((t-.5)/.3))
-        T(im,"Atatürk'ün izinde",540,330,64,INK,LORA)
-        return im
-    return f
+    f,m=flag(w,t); ImageDraw.Draw(im).line([(x-8,y-20),(x-8,y+f.height+90)],fill=(214,206,190),width=12); circle(im,x-8,y-26,12,(214,180,90)); im.paste(f,(int(x),int(y)),m)
+def carnation(im,x,y,s=1,seed=0):
+    d=ImageDraw.Draw(im); d.line([(x,y),(x+8*s,y+260*s)],fill=(66,104,58),width=max(3,int(7*s)))
+    d.polygon([(x+4*s,y+120*s),(x+50*s,y+90*s),(x+10*s,y+140*s)],fill=(80,120,66))
+    rs=random.Random(seed)
+    for i in range(22):
+        a=rs.uniform(0,2*math.pi); r=rs.uniform(2,30)*s; circle(im,x+math.cos(a)*r,y-10*s+math.sin(a)*r*.7,16*s,(170+rs.randint(-25,25),16,30+rs.randint(0,16)))
+def dark(t):
+    return sky((26,22,28),(70,58,52))
 def s_soz(t):
-    im=Image.new('RGB',(W,H),(232,220,192)); im=dim(im,.6); c=TM['soz']['chunks']
-    put_flag(im,330,300,420,t)
-    T(im,"“Beni görmek demek,",540,820,58,(244,236,214),LORA,a=clamp(t/.5))
-    T(im,"mutlaka yüzümü görmek değildir.",540,900,52,(244,236,214),LORA,a=clamp(t/.5))
-    a=clamp((t-c[1][0])/.5) if t>=c[1][0]-.05 else 0
-    for j,l in enumerate(["Benim fikirlerimi, benim duygularımı","anlıyorsanız ve hissediyorsanız","bu kâfidir.”"]):
-        T(im,l,540,1030+j*70,44,(228,216,190),LORAI,a=a)
-    T(im,"Mustafa Kemal Atatürk",540,1300,40,(214,190,140),LORA,a=a)
-    return im
+    k='soz'; c=TM[k]['chunks']; im=dark(t); put_flag(im,300,240,480,t); petals(im,t,14)
+    L1=["“Beni görmek demek,","mutlaka yüzümü görmek değildir."]; L2=["Benim fikirlerimi, benim duygularımı","anlıyorsanız ve hissediyorsanız","bu kâfidir.”"]
+    for j,l in enumerate(L1): T(im,l,540,880+j*80,56,CREAM,LORA,a=clamp((t-j*.6)/.6))
+    if t>=c[1][0]-.05:
+        for j,l in enumerate(L2): T(im,l,540,1090+j*72,46,(232,220,196),LORAI,a=clamp((t-c[1][0]-j*.7)/.6))
+        T(im,"— Mustafa Kemal Atatürk",540,1360,42,(220,190,130),LORA,a=clamp((t-c[1][0]-2.4)/.6))
+    return grade(im,t,.15)
 def s_cta(t):
-    im=Image.new('RGB',(W,H),(232,220,192)); im=dim(im,.6)
-    put_flag(im,330,300,420,t)
-    T(im,"Saygıyla, özlemle",540,860,72,(244,236,214),LORA,a=clamp(t/.6)); T(im,"anıyoruz.",540,950,72,(244,236,214),LORA,a=clamp(t/.6))
-    for i in range(7): carnation(im,240+i*100,1180+(i%2)*30,1.1)
-    v=ve-TM['cta']['start']
-    if t>v+.3: chip(im,"Yorumlara bir çiçek bırak",540,1460,44,back((t-v-.3)/.3),fill=RED)
-    mark(im,"Müzik özgündür · Çizimler temsilidir"); return im
+    k='cta'; im=dark(t); put_flag(im,300,240,480,t); petals(im,t+5,20,9)
+    T(im,"Saygıyla, özlemle",540,880,74,CREAM,LORA,a=clamp(t/.6)); T(im,"anıyoruz.",540,970,74,CREAM,LORA,a=clamp(t/.6))
+    for i in range(9): carnation(im,180+i*90,1170+abs(4-i)*18,1.05,i)
+    v=ve-TM[k]['start']
+    if t>v+.4: chip(im,"Yorumlara bir çiçek bırak",540,1520,46,back((t-v-.4)/.3),fill=RED)
+    mark(im,"Müzik özgündür · Çizimler temsilidir"); return grade(im,t,.15)
 F={'hook':s_hook,'iz':s_iz,'soz':s_soz,'cta':s_cta}
 for i,s in enumerate(STOPS): F[s[0]]=mkstop(i)
 _oc=M.caption
 def _cap2(img,now):
-    if TM['selanik']['start']<=now<TM['cta']['end']+1 or now<TM['iz']['start']: return
+    if TM['selanik']['start']<=now: return
     _oc(img,now)
 M.caption=_cap2
 exec(open('/home/claude/masal4/common.py').read())
