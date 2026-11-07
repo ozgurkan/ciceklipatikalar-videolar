@@ -2,16 +2,21 @@
 import os; os.chdir('/home/claude/ata')
 exec(open('/home/claude/sakli/shead.py').read())
 AN=Image.open('anatolia.png').convert('RGB'); AN.load()
-S=218.6; LON0=19.5; LAT0=40.5+2880/S; CC=math.cos(math.radians(40.5))
+CC=math.cos(math.radians(37.5)); S=3240/(25*CC); LON0=19.5; LAT0=35.5+2880/S
 def AP(lat,lon): return ((lon-LON0)*S*CC,(LAT0-lat)*S)
 def cam2(cx,cy,z):
     w,h=W/z,H/z; x0,y0=cx-w/2,cy-h/2
     x0=max(0,min(x0,AN.width-w)); y0=max(0,min(y0,AN.height-h))
     im=AN.crop((int(x0),int(y0),int(x0+w),int(y0+h))).resize((W,H),Image.BILINEAR)
     return im,lambda px,py:((px-x0)*z,(py-y0)*z)
-STOPS=[('selanik',40.64,22.94,'Selanik','1881','Doğduğu şehir'),('manastir',41.03,21.33,'Manastır','1896','Askerî idadi yılları'),
-       ('canakkale',40.24,26.33,'Çanakkale','1915','Anafartalar'),('samsun',41.29,36.33,'Samsun','1919','Kurtuluşun ilk adımı'),
-       ('ankara',39.93,32.86,'Ankara','1923','Cumhuriyetin ilanı'),('istanbul',41.04,29.0,'İstanbul','1938','Dolmabahçe')]
+STOPS=[('selanik',40.64,22.94,'Selanik','1881','Doğduğu şehir','house'),('manastir',41.03,21.33,'Manastır','1896','Askerî idadi yılları','school'),
+ ('harbiye',41.04,28.98,'İstanbul','1899','Harbiye yılları','school'),('sam',33.51,36.29,'Şam','1905','İlk görev yeri','dome'),
+ ('trablus',32.08,23.96,'Trablusgarp','1912','Tobruk','palm'),('sofya',42.70,23.32,'Sofya','1913','Askerî ataşe','bldg'),
+ ('canakkale',40.24,26.33,'Çanakkale','1915','Anafartalar','hills'),('samsun',41.29,36.33,'Samsun','1919','Kurtuluşun ilk adımı','ship'),
+ ('erzurum',39.91,41.27,'Erzurum','1919','Erzurum Kongresi','mount'),('sivas',39.75,37.02,'Sivas','1919','Sivas Kongresi','school'),
+ ('meclis',39.94,32.85,'Ankara','1920','TBMM açıldı','meclis'),('sakarya',39.58,32.14,'Sakarya','1921','Sakarya Meydan Muharebesi','river'),
+ ('dumlupinar',38.85,30.0,'Dumlupınar','1922','Büyük Zafer','victory'),('cumhuriyet',39.93,32.86,'Ankara','1923','Cumhuriyet ilan edildi','meclisflag'),
+ ('istanbul',41.04,29.02,'İstanbul','1938','Dolmabahçe','palace')]
 RED=(196,18,34); CREAM=(244,236,214); NIGHT=(34,30,40)
 _vig=None
 def vignette():
@@ -71,7 +76,7 @@ def s_hook(t):
     if t>=c[1][0]-.05: T(im,"Dolmabahçe Sarayı",540,310,44,(230,214,180),LORAI,a=clamp((t-c[1][0])/.4))
     return grade(im,t,.25)
 def s_iz(t):
-    cx,cy=AP(40.6,29.2); im,m=cam2(cx,cy,.36-.01*t)
+    cx,cy=AP(34.9,32.0); im,m=cam2(cx,cy,.334)
     T(im,"Atatürk'ün izinde",540,300,84,INK,LORA,a=clamp(t/.5))
     pts=[m(*AP(s[1],s[2])) for s in STOPS]
     for i,(x,y) in enumerate(pts):
@@ -79,6 +84,8 @@ def s_iz(t):
     return grade(im,t)
 def icon(im,key,cx,cy,t):
     d=ImageDraw.Draw(im)
+    if key in ('dome','palm','bldg','mount','river','victory','meclisflag'): return icon2(im,key,cx,cy,t)
+    key={'house':'selanik','school':'manastir','hills':'canakkale','ship':'samsun','meclis':'ankara','palace':'istanbul'}.get(key,key)
     if key=='selanik':
         ink_poly(im,[(cx-110,cy+80),(cx+110,cy+80),(cx+110,cy-30),(cx-110,cy-30)],(226,170,170)); ink_poly(im,[(cx-130,cy-30),(cx+130,cy-30),(cx,cy-110)],(150,70,50))
         ink_poly(im,[(cx-50,cy-30),(cx+50,cy-30),(cx+60,cy+20),(cx-60,cy+20)],(240,200,200))
@@ -104,23 +111,49 @@ def icon(im,key,cx,cy,t):
         ink_poly(im,[(cx-160,cy+80),(cx+160,cy+80),(cx+160,cy-10),(cx-160,cy-10)],(232,224,206))
         for i in range(8): d.chord([cx-150+i*38,cy+10,cx-122+i*38,cy+70],180,360,fill=(120,120,130))
         d.rectangle([cx-26,cy-120,cx+26,cy-10],fill=(232,224,206),outline=INK,width=2); clock(im,cx,cy-80,20,9)
+def icon2(im,key,cx,cy,t):
+    d=ImageDraw.Draw(im)
+    if key=='dome':
+        d.rectangle([cx-140,cy+70,cx+140,cy+80],fill=(200,170,120))
+        for dx,r in ((-70,40),(30,60)): d.chord([cx+dx-r,cy+70-r*1.4,cx+dx+r,cy+70+r*.6],180,360,fill=(230,214,180),outline=INK,width=3); d.rectangle([cx+dx-r,cy+30,cx+dx+r,cy+75],fill=(230,214,180),outline=INK)
+        d.rectangle([cx+110,cy-90,cx+126,cy+75],fill=(230,214,180),outline=INK); d.polygon([(cx+106,cy-90),(cx+130,cy-90),(cx+118,cy-120)],fill=(150,110,70))
+    elif key=='palm':
+        water(im,cx-160,cy+40,cx+160,cy+90,t,(110,150,170)); d.rectangle([cx-160,cy+20,cx+160,cy+42],fill=(220,190,130))
+        for x in (cx-60,cx+50):
+            d.line([(x,cy+25),(x+10,cy-70)],fill=BROWN,width=9)
+            for a in (-2.6,-2.0,-1.2,-0.5): d.line([(x+10,cy-70),(x+10+math.cos(a)*60,cy-70+math.sin(a)*40+25)],fill=GREEN,width=8)
+    elif key=='bldg':
+        ink_poly(im,[(cx-130,cy+80),(cx+130,cy+80),(cx+130,cy-10),(cx-130,cy-10)],(226,214,190)); d.chord([cx-50,cy-80,cx+50,cy+20],180,360,fill=(140,150,140),outline=INK)
+        for i in range(5): d.rectangle([cx-110+i*48,cy+10,cx-92+i*48,cy+60],fill=(90,90,100))
+    elif key=='mount':
+        ink_poly(im,[(cx-160,cy+80),(cx-60,cy-70),(cx+20,cy+10),(cx+90,cy-90),(cx+160,cy+80)],(150,150,160))
+        poly(im,[(cx-80,cy-40),(cx-60,cy-70),(cx-40,cy-40)],(250,250,250)); poly(im,[(cx+68,cy-58),(cx+90,cy-90),(cx+112,cy-58)],(250,250,250))
+        ink_poly(im,[(cx-60,cy+80),(cx+60,cy+80),(cx+60,cy+30),(cx-60,cy+30)],(226,210,180))
+    elif key=='river':
+        ink_poly(im,[(cx-160,cy+80),(cx-160,cy-20),(cx-40,cy-70),(cx+80,cy-30),(cx+160,cy-60),(cx+160,cy+80)],(170,160,110))
+        d.line([(cx-160,cy+60),(cx-40,cy+30),(cx+60,cy+55),(cx+160,cy+25)],fill=WATER,width=16)
+    elif key=='victory':
+        ink_poly(im,[(cx-160,cy+80),(cx-70,cy-30),(cx+20,cy+20),(cx+100,cy-50),(cx+160,cy+80)],(160,150,100))
+        d.line([(cx+100,cy-50),(cx+100,cy-150)],fill=INK,width=5); d.rectangle([cx+100,cy-150,cx+170,cy-105],fill=RED)
+        circle(im,cx+125,cy-128,13,(255,255,255)); circle(im,cx+130,cy-128,10,RED)
+    elif key=='meclisflag':
+        icon(im,'meclis',cx,cy,t); d.line([(cx,cy-80),(cx,cy-160)],fill=INK,width=5); d.rectangle([cx,cy-160,cx+70,cy-115],fill=RED)
+        circle(im,cx+25,cy-138,13,(255,255,255)); circle(im,cx+30,cy-138,10,RED)
 def mkstop(i):
-    key,lat,lon,name,year,sub=STOPS[i]
+    key,lat,lon,name,year,sub,ic=STOPS[i]
     def f(t):
-        p=ease(clamp(t/1.4)); cur=AP(lat,lon); prv=AP(STOPS[i-1][1],STOPS[i-1][2]) if i else AP(40.6,29.2)
-        u=ease(clamp(t/1.8)); cx=prv[0]+(cur[0]-prv[0])*u*.5+(AP(40.6,29.2)[0]-prv[0])*0; cy=prv[1]+(cur[1]-prv[1])*u*.5
-        mid=(AP(40.6,29.2)); cx=mid[0]*.85+cur[0]*.15; cy=mid[1]+480
-        im,m=cam2(cx,cy,.36+.025*clamp(t/4))
+        p=ease(clamp(t/1.0)); cxx,cyy=AP(34.9,32.0)
+        im,m=cam2(cxx,cyy,.334+.012*clamp(t/3))
         pts=[m(*AP(s[1],s[2])) for s in STOPS]
         if i: route(im,pts[:i],1,RED,9); route(im,[pts[i-1],pts[i]],p,RED,9)
         for j in range(i+1):
             if j<i or p>.95: x,y=pts[j]; circle(im,x,y,15,RED); circle(im,x,y,6,CREAM)
         if p>.9: pin(im,*pts[i],t,None,RED)
-        T(im,"Atatürk'ün izinde",540,250,60,INK,LORA)
+        T(im,"Atatürk'ün izinde",540,250,60,INK,LORA); T(im,f"{i+1} / {len(STOPS)}",540,325,34,(110,80,56),LORA)
         a=back((t-.15)/.35)
-        card(im,160,1060,920,1580)
-        icon(im,key,540,1200,t)
-        T(im,year,540,1370,76,RED,LORA,scale=a); T(im,name,540,1455,54,INK,LORA,a=clamp((t-.3)/.3)); T(im,sub,540,1525,40,(100,76,50),LORAI,a=clamp((t-.5)/.3))
+        card(im,160,1250,920,1700)
+        icon(im,ic,540,1370,t)
+        T(im,year,540,1525,72,RED,LORA,scale=a); T(im,name,540,1600,52,INK,LORA,a=clamp((t-.2)/.3)); T(im,sub,540,1660,38,(100,76,50),LORAI,a=clamp((t-.35)/.3))
         return grade(im,t)
     return f
 def flag(w,t):

@@ -14,8 +14,8 @@ def ring(idx):
         p=arcs[i] if i>=0 else arcs[~i][::-1]
         out+=p if not out else p[1:]
     return out
-W,H=3240,5760; LON0=19.5; LAT0=40.5+ (H/2)/218.6; S=218.6; C=math.cos(math.radians(40.5))
-def P(lat,lon): return ((lon-LON0)*S*C/.76*.76, (LAT0-lat)*S)
+W,H=3240,5760; LON0=19.5; C=math.cos(math.radians(37.5)); S=3240/(25*C); LAT0=35.5+(H/2)/S
+def P(lat,lon): return ((lon-LON0)*S*C, (LAT0-lat)*S)
 SEA=(170,196,190); LAND=(232,214,170); INK=(90,66,44)
 im=Image.new('RGB',(W,H),SEA); d=ImageDraw.Draw(im)
 for g in topo['objects']['countries']['geometries']:
