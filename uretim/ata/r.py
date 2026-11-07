@@ -11,7 +11,7 @@ def cam2(cx,cy,z):
     return im,lambda px,py:((px-x0)*z,(py-y0)*z)
 STOPS=[('selanik',40.64,22.94,'Selanik','1881','Doğduğu şehir','house'),('manastir',41.03,21.33,'Manastır','1896','Askerî idadi yılları','school'),
  ('harbiye',41.04,28.98,'İstanbul','1899','Harbiye yılları','school'),('sam',33.51,36.29,'Şam','1905','İlk görev yeri','dome'),
- ('trablus',32.08,23.96,'Trablusgarp','1912','Tobruk','palm'),('sofya',42.70,23.32,'Sofya','1913','Askerî ataşe','bldg'),
+ ('trablus',32.08,23.96,'Trablusgarp','1911','Tobruk Savaşı','palm'),('sofya',42.70,23.32,'Sofya','1913','Askerî ataşe','bldg'),
  ('canakkale',40.24,26.33,'Çanakkale','1915','Anafartalar','hills'),('samsun',41.29,36.33,'Samsun','1919','Kurtuluşun ilk adımı','ship'),
  ('erzurum',39.91,41.27,'Erzurum','1919','Erzurum Kongresi','mount'),('sivas',39.75,37.02,'Sivas','1919','Sivas Kongresi','school'),
  ('meclis',39.94,32.85,'Ankara','1920','TBMM açıldı','meclis'),('sakarya',39.58,32.14,'Sakarya','1921','Sakarya Meydan Muharebesi','river'),
