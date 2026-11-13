@@ -163,24 +163,64 @@ def s_azal(t):
         put(im, sunflower(120), 780, 920, s=pop(t, wt(k, 1, "ayçiçeği") - .15, .35), rot=5 * math.sin(t * 2), sh=8)
         chip(im, "Karpuz yerine ayçiçeği", 540, 1210, 44, pop(t, c1 + 1.0), fill=GOLD, tc=INK)
     src(im, "Kaynak: Görünüm Gazetesi, 30 Nisan 2026"); return im
+@lru_cache(None)
+def truck():
+    c = C(520, 300)
+    c.fill(lambda d: d.rounded_rectangle(S(20, 120, 360, 230), 10 * SS_, fill=255), (176, 126, 76), top=1.1, bot=.82, noise=4, ink=3)
+    c.over(lambda d: [d.line(S(20 + x, 122, 20 + x, 228), fill=(120, 80, 44, 255), width=3 * SS_) for x in range(48, 340, 48)])
+    c.fill(lambda d: d.polygon(SP([(360, 230), (360, 96), (432, 96), (486, 156), (500, 230)]), fill=255), (168, 72, 40), top=1.2, bot=.8, ink=3)
+    c.over(lambda d: d.polygon(SP([(380, 112), (426, 112), (462, 156), (380, 156)]), fill=(206, 228, 236, 255)))
+    c.fill(lambda d: d.rectangle(S(20, 226, 500, 244), fill=255), (70, 60, 56), top=1.1, bot=.8, ink=2)
+    im = c.done()
+    rs = random.Random(1)
+    for row, n in enumerate((6, 5, 4)):
+        for i in range(n):
+            put(im, melon(78), 62 + row * 26 + i * 52 + rs.uniform(-3, 3), 112 - row * 34, rot=rs.uniform(-25, 25))
+    return im
+@lru_cache(None)
+def wheel():
+    c = C(84, 84); c.fill(lambda d: d.ellipse(S(6, 6, 78, 78), fill=255), (44, 40, 40), top=1.2, bot=.8, ink=2)
+    c.over(lambda d: (d.ellipse(S(26, 26, 58, 58), fill=(170, 166, 160, 255)), d.line(S(42, 12, 42, 72), fill=(120, 116, 110, 255), width=4 * SS_), d.line(S(12, 42, 72, 42), fill=(120, 116, 110, 255), width=4 * SS_))); return c.done()
+def s_kamyon(t):
+    k = 'kamyon'; im = stage(.46, t); banner(im, "Köylünün anlattığı", None, y=320, sz=84)
+    d = ImageDraw.Draw(im); d.rounded_rectangle([110, 1010, 970, 1090], 14, fill=(120, 110, 100), outline=INK, width=3)
+    for x in range(int(130 - (t * 260) % 120), 960, 120):
+        if x > 120: d.line([(x, 1050), (min(x + 60, 960), 1050)], fill=(236, 226, 200), width=6)
+    crop = im.crop((104, 600, 976, 1100))
+    for i in range(3):
+        x = -260 + (t * 250 + i * 560) % 1680 - 120; y = 900 + 3 * math.sin(t * 16 + i)
+        if -300 < x < 1400:
+            for j in range(3):
+                ph = (t * 1.5 + j / 3 + i * .3) % 1; put(im, art.puff(60, (214, 196, 160), 150), x - 250 - ph * 110, 1000 - ph * 30, s=.5 + ph, a=(1 - ph) * .8)
+            put(im, truck(), x, y, sh=8)
+            for wx in (-150, 150): put(im, wheel(), x + wx, y + 104, rot=-(t * 420 + i * 40) % 360)
+    edge = Image.new('L', im.size, 0); ImageDraw.Draw(edge).rounded_rectangle([104, 600, 976, 1100], 30, fill=255)
+    base = stage(.46, t); banner(base, "Köylünün anlattığı", None, y=320, sz=84); im = Image.composite(im, base, edge)
+    T(im, "Her gün kamyonlarla karpuz", 540, 690, 54, RUST, LORA, a=clamp((t - .3) / .3))
+    chip(im, "Eskiden", 540, 1200, 46, pop(t, wt(k, 0, "eskiden") - .1), fill=CLAY)
+    src(im, "Köylülerin anlatımına göre"); return im
+ROWS = [("Çeşmekolu", "Lüleburgaz · Kırklareli", RUST), ("Kavakdere", "Kırklareli · 1970'lerden beri", GREEN), ("Erikleryurdu", "Babaeski · kumlu toprak", CLAY), ("Üsküpdere", "Kırklareli · kışın da tezgâhta", DKBLUE), ("Marmaraereğlisi", "Tekirdağ · karpuz festivali", GOLD)]
 def s_diger(t):
-    k = 'diger'; cx, cy = (LUL[0] + BAB[0] + KIR[0]) / 3, (LUL[1] + KIR[1]) / 2 + 60; im, m = cam(cx, cy, .8 + .012 * t)
-    banner(im, "Kırklareli'nin karpuzları", None, y=320, sz=74)
-    c1, c2 = ct(k, 1) - .05, ct(k, 2) - .05
-    gpin(im, *m(*LUL), t, .3, "Çeşmekolu")
-    gpin(im, *m(*KIR), t, c1, "Kavakdere", col=GREEN)
-    gpin(im, *m(*BAB), t, c2, "Erikleryurdu", col=CLAY, dy=250, dx=-40)
-    if c1 <= t < c2: chip(im, "1970'lerden beri ekiliyor", 540, 1250, 44, pop(t, c1 + .3), fill=GREEN); chip(im, "Kaynak: AA, 2020", 540, 1335, 26, 1, fill=PAPER, tc=INK)
-    if t >= c2: chip(im, "Kumlu toprak · ince kabuk", 540, 1250, 44, pop(t, c2 + .3), fill=CLAY); chip(im, "Kaynak: İHA, 2026", 540, 1335, 26, 1, fill=PAPER, tc=INK)
-    chip(im, "İğneler ilçe merkezini gösterir · Çizim temsilidir", 540, 1610, 24, 1, fill=PAPER, tc=INK); return im
+    k = 'diger'; im = stage(.46, t, h=840, cy=1000); banner(im, "Trakya'nın karpuz durakları", None, y=320, sz=70)
+    ts = [.15] + [ct(k, i) - .05 for i in range(1, 5)]
+    for i, (name, sub, col) in enumerate(ROWS):
+        if t < ts[i]: continue
+        g = eout((t - ts[i]) / .35); y = 672 + i * 132; x0 = 150 + (1 - g) * 80
+        cur = i == max(j for j in range(5) if t >= ts[j])
+        if i == 0 or cur: rrect(im, 122, y - 58, 958, y + 58, 20, (236, 214, 150) if i == 0 else (240, 230, 204), .9 * g)
+        put(im, badge(i + 1), x0 + 26, y, s=1.4 * g, a=g)
+        tw = text_mask(name, 50, LORA).width; T(im, name, x0 + 84 + tw / 2, y - 18, 50, col if i else RUST, LORA, a=g)
+        sw = text_mask(sub, 28, LORAI).width; T(im, sub, x0 + 84 + sw / 2, y + 30, 28, (104, 80, 54), LORAI, a=g)
+        put(im, half(92) if i == 0 else melon(92), 880, y, s=pop(t, ts[i] + .15, .25), sh=3)
+    T(im, "Kaynaklar: Görünüm, AA, İHA, Yeşilyurt, Trakya Gazetesi", 540, 1380, 23, (128, 100, 70), LORAI); return im
 def s_cta(t):
     k = 'cta'; im = stage(.44, t); banner(im, "Sence hangisi?", None, y=320, sz=90)
-    for i, (lab, col) in enumerate((("Çeşmekolu", RUST), ("Kavakdere", GREEN), ("Erikleryurdu", CLAY))):
-        x = 250 + i * 290; g = pop(t, .1 + i * .15, .3)
-        put(im, slice_(270), x, 830 + 8 * math.sin(t * 2.5 + i * 2), s=g, rot=(-8, 0, 8)[i], sh=8); chip(im, lab, x, 990, 34, pop(t, .3 + i * .15, .22), fill=col)
+    put(im, half(210), 300, 740 + 5 * math.sin(t * 2.5), s=pop(t, .05, .3), rot=-8, sh=8); chip(im, "Çeşmekolu", 640, 740, 56, pop(t, .2, .25), fill=RUST)
+    for i, (name, sub, col) in enumerate(ROWS[1:]):
+        chip(im, name, 320 + (i % 2) * 440, 915 + (i // 2) * 110, 36, pop(t, .4 + i * .12, .22), fill=col)
     c1 = ct(k, 1) - .05
     if t >= c1:
-        chip(im, "Yorumlara yaz", 540, 1150, 50, pop(t, c1)); T(im, "Takip et · @ciceklipatikalar", 540, 1275, 44, INK, LORA, a=clamp((t - c1 - .6) / .4))
+        chip(im, "Yorumlara yaz", 540, 1170, 50, pop(t, c1)); T(im, "Takip et · @ciceklipatikalar", 540, 1290, 44, INK, LORA, a=clamp((t - c1 - .6) / .4))
     mark(im, "Müzik özgündür · Çizim temsilidir"); return im
-F = {'hook': s_hook, 'yer': s_yer, 'tat': s_tat, 'azal': s_azal, 'diger': s_diger, 'cta': s_cta}
+F = {'hook': s_hook, 'yer': s_yer, 'kamyon': s_kamyon, 'tat': s_tat, 'azal': s_azal, 'diger': s_diger, 'cta': s_cta}
 exec(open('/home/claude/masal4/common.py').read())
