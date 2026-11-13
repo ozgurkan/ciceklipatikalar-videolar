@@ -23,3 +23,9 @@ AÇILIŞ KURALI (7 Kasım, Bölüm 3 / Bölüm 4 karşılaştırması): Bölüm 
 KAYNAK KURALI (7 Kasım, Eriklice hatası): Videoda geçen her yer/bilgi cümlesi ya resmi kaynakla (bakanlık, TÜRKPATENT, belediye, valilik) ya da birbirinden bağımsız iki güvenilir kaynakla doğrulanmalı. Küre Ansiklopedi gibi yapay zekâ destekli kaynaklar tek başına yeterli değil. Doğrulanamayan cümle videodan çıkarılır, yumuşatılarak bırakılmaz. Yerel takipçilerin düzeltmeleri ciddiye alınır: yorumlarda iki ayrı yerel takipçi Şarköy'ün yukarı köylerinden Kirazlı (ve Çınarlı) bağlarını önerdi; Kirazlı "bağlarıyla ünlü" diye DHA haberinde geçiyor. Uygun boş günde Kirazlı/Şarköy yukarı köyleri videosu düşünülebilir.
 
 HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) planlandı. Kasım'da kullanılan Metricool hakkı 16 oldu; kalan 4 hak Balkan Rotası'nın 20-23 Kasım bölümlerine yeter, 24 Kasım'dan ay sonuna kadar videolar Özgür'e elle yükleme için gönderilir. Anma videosu Atatürk portresi/yüzü içermez (web fotoğrafı ve yapay zekâ yüz üretimi yok).
+
+## Ek: Çeşmekolu karpuzu (13 Kasım'da eklendi)
+- 15 Kasım Pazar 13.00, Trakya Lezzet Rotası ek bölüm: Çeşmekolu karpuzu (reels/lezzet-ek-karpuz.mp4, betikler uretim/lezzet/k1). Metricool'a planlandı (uuid -6284145452135330702). Öğlen saati denemesi.
+- HAK NOTU: Kasım'da 17 paylaşım hakkı kullanıldı, kalan 3. Balkan Rotası 20-22 Kasım Metricool ile; 23 Kasım'dan itibaren videolar kullanıcıya elle yükleme için gönderilecek.
+- Çeşmekolu bilgileri tek yerel kaynağa (Görünüm Gazetesi, 30 Nisan 2026) dayanıyor; videoda ve açıklamada kaynak belirtildi. İkinci bağımsız kaynak bulunamadı.
+- Peynir videosundan dersler (12 Kasım, 24 saatte 31 bin+): "hangisi?" rekabet sorusu, 30-40 sn süre, yeni çizim kalitesi (uretim/lezzet/art.py). Ortalama izlenme 13 sn; açılış ilk 3 saniyede sert olmalı.
