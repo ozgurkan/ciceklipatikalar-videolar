@@ -1,0 +1,20 @@
+OUTRO=6.5
+SEGS={
+"hook":[("Bu köfte pişmeden önce neredeyse bir gün bekliyor.",["Bu köfte, pişmeden önce neredeyse bir gün bekliyor."],["köfte","pişmeden","neredeyse","bekliyor"],1.26,.3),
+        ("Neden?",["Neden?","Peki, neden?"],["neden"],1.3,.45)],
+"yer":[("Burası Tekirdağ, Marmara'nın kıyısı.",["Burası Tekirdağ, Marmara'nın kıyısı.","Burası Tekirdağ. Marmara'nın kıyısı."],["tekirdağ","marmara"],1.28,.2),
+       ("Köftesi bütün Türkiye'de biliniyor.",["Köftesi bütün Türkiye'de biliniyor."],["köftesi","biliniyor"],1.28,.4)],
+"et":[("Tescil belgesine göre Tekirdağ'da yetişen genç dana eti kullanılıyor.",["Tescil belgesine göre, Tekirdağ'da yetişen genç dana eti kullanılıyor."],["tescil","tekirdağ","genç","dana"],1.26,.22),
+      ("İçine bayat ekmek, soğan, sarımsak ve kimyon giriyor.",["İçine bayat ekmek, soğan, sarımsak ve kimyon giriyor."],["ekmek","soğan","sarımsak","kimyon"],1.28,.4)],
+"dinlen":[("Hamur soğukta en az 18 saat dinleniyor.",["Sonra hamur, soğukta en az on sekiz saat dinleniyor."],["hamur","on sekiz","dinleniyor"],1.28,.22),
+          ("Belgeye göre lezzetin sırlarından biri bu bekleyiş.",["Belgeye göre lezzetin sırlarından biri, bu bekleyiş."],["lezzetin","bekleyiş"],1.28,.4)],
+"sekil":[("Her köfte 15 gram",["Her köfte on beş gram."],["köfte","on beş","gram"],1.3,.18),
+         ("Boyu 6,5 santim",["Boyu altı buçuk santim."],["altı buçuk","santim"],1.3,.4)],
+"izgara":[("Mangal kömüründe, oluklu sacın üstünde pişiyor.",["Mangal kömüründe, oluklu sacın üstünde pişiyor."],["mangal","sacın","pişiyor"],1.28,.22),
+          ("Porsiyon tam 10 köfte.",["Porsiyon, tam on köfte."],["porsiyon","on köfte"],1.3,.4)],
+"tescil":[("2020'de coğrafi işaret aldı.",["İki bin yirmide coğrafi işaret aldı."],["iki bin yirmi","coğrafi","işaret"],1.28,.22),
+          ("Tarifin yaklaşık 100 yıl önce bir ustayla başladığı anlatılıyor.",["Tarifin, yaklaşık yüz yıl önce bir ustayla başladığı anlatılıyor."],["yüz yıl","ustayla","anlatılıyor"],1.26,.45)],
+"cta":[("Sen Tekirdağ köftesi yedin mi?",["Sen Tekirdağ köftesi yedin mi?"],["tekirdağ","yedin"],1.3,.2),
+       ("Yorumlara yaz.",["Yorumlara yaz."],["yaz"],1.25,.3),
+       ("Yarın Edirne'ye gidiyoruz. Takip et, kaçırma.",["Yarın Edirne'ye gidiyoruz. Takip et, kaçırma."],["edirne","takip","kaçırma"],1.28,.1)],
+}
