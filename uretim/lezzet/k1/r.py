@@ -168,30 +168,42 @@ def gpin(im, sx, sy, t, t0, lab, col=RUST):
     if q >= 1: chip(im, lab, sx, sy - 215, 40, pop(t, t0 + .45, .22), fill=col)
 
 # ---------- sahneler ----------
+def TS(im, txt, x, y, size, col, font=None, scale=1., a=1., off=5):
+    if scale <= .02 or a <= 0: return
+    T(im, txt, x + off, y + off, size, (30, 18, 10), font or M.BOLD, a=a * .55, scale=scale); T(im, txt, x, y, size, col, font or M.BOLD, a=a, scale=scale)
+DARK = Image.new('RGB', (W, H), (40, 26, 16))
+_gy, _gx = np.mgrid[0:H, 0:W]; _gl = np.clip(1 - np.sqrt(((_gx - 540) / 760) ** 2 + ((_gy - 1000) / 900) ** 2), 0, 1) ** 1.4
+GLOW = Image.fromarray((_gl * 120).astype(np.uint8), 'L'); GLOWC = Image.new('RGB', (W, H), (255, 214, 140))
 def s_hook(t):
-    k = 'hook'; im = stage(.5, t, h=820, cy=995); banner(im, "En iyi karpuz hangi köyün?", SER, y=320, sz=70)
-    c1 = ct(k, 1) - .05; u = t - c1; cx, cy = 540, 985
+    k = 'hook'; im, m = cam(TEK[0], TEK[1], .5 + .012 * t); im = Image.blend(im, DARK, .56); im = Image.composite(GLOWC, im, GLOW); im = vig(im)
+    chip(im, SER, 540, 300, 34, 1, fill=PAPER, tc=INK)
+    c1 = ct(k, 1) - .05; u = t - c1; cx, cy = 540, 1030
     if u < .12:
-        k_ = 1 + .03 * math.sin(t * 6) + (.12 * clamp(u / .12 + 1) if u > -.12 else 0)
-        put(im, melon(350), cx, cy + 6 * math.sin(t * 2.4), s=k_, rot=5 * math.sin(t * 1.7), sh=18)
-        s = 1 + .1 * math.sin(t * 7); circle(im, cx, cy - 6, 70 * s, (252, 244, 222)); ImageDraw.Draw(im).ellipse([cx - 70 * s, cy - 6 - 70 * s, cx + 70 * s, cy - 6 + 70 * s], outline=INK, width=4); T(im, "?", cx, cy - 10, 104, RUST, LORA, scale=s)
+        for i in range(14):
+            a = i / 14 * 2 * math.pi + t * .25; d = ImageDraw.Draw(im)
+        k_ = 1 + .03 * math.sin(t * 6) + (.14 * clamp(u / .12 + 1) if u > -.12 else 0)
+        put(im, melon(520), cx, cy + 8 * math.sin(t * 2.4), s=k_, rot=5 * math.sin(t * 1.7), sh=26)
         for i, (name, sub, col) in enumerate(ROWS):
-            a = -math.pi / 2 + i / 5 * 2 * math.pi + t * .3; x, y = cx + math.cos(a) * 285, cy + math.sin(a) * 300
-            chip(im, name, x, y + 5 * math.sin(t * 3 + i), 38 if len(name) < 13 else 32, 1 + .05 * math.sin(t * 5 + i * 1.3), fill=col)
+            a = -math.pi / 2 + i / 5 * 2 * math.pi + t * .34; x, y = cx + math.cos(a) * 350, cy + math.sin(a) * 300
+            chip(im, name, x, y + 5 * math.sin(t * 3 + i), 40 if len(name) < 13 else 34, 1 + .05 * math.sin(t * 5 + i * 1.3), fill=col)
+        w0, w1 = wt(k, 0, "karpuz") - .25, wt(k, 0, "hangi") - .12
+        TS(im, "EN İYİ KARPUZ", 540, 470, 104, (252, 244, 222), scale=1 if t < .01 else (pop(t, -.2, .3) or 1))
+        TS(im, "HANGİ KÖYÜN?", 540, 600, 112, (255, 206, 84), scale=(1 if t < .05 else 1 + .06 * math.sin(clamp((t - w1) / .35) * math.pi)) * (1 + .02 * math.sin(t * 7)))
     else:
-        q = eout((u - .12) / .5); rs = random.Random(5)
-        for i in range(22):
-            a = rs.uniform(-math.pi, 0) if i % 3 else rs.uniform(0, 2 * math.pi); v = rs.uniform(260, 620); tt = u - .12
-            x, y = cx + math.cos(a) * v * tt, cy - 130 + math.sin(a) * v * tt + 620 * tt * tt
-            if tt < 1.1 and 590 < y < 1380: put(im, dropr(rs.choice([9, 12, 15])), x, y, rot=math.degrees(math.atan2(-(math.cos(a) * v), math.sin(a) * v + 1240 * tt)), a=clamp(1.3 - tt))
-        put(im, half(330), cx - 175 * q, cy - 120 + 10 * math.sin(t * 2.2), rot=18 * q + 3 * math.sin(t * 2), sh=16)
-        put(im, half(330), cx + 175 * q, cy - 120 + 10 * math.sin(t * 2.2 + 1), rot=-18 * q - 3 * math.sin(t * 2), sh=16)
-        g = pop(t, c1 + .45, .32)
+        q = eout((u - .12) / .5); rs = random.Random(5); tt = u - .12
+        if tt < .25: im = Image.blend(im, Image.new('RGB', (W, H), (255, 240, 220)), .5 * (1 - tt / .25))
+        for i in range(34):
+            a = rs.uniform(-math.pi, 0) if i % 3 else rs.uniform(0, 2 * math.pi); v = rs.uniform(300, 820)
+            x, y = cx + math.cos(a) * v * tt, cy - 60 + math.sin(a) * v * tt + 700 * tt * tt
+            if tt < 1.3 and y < 1700: put(im, dropr(rs.choice([10, 14, 18])), x, y, rot=math.degrees(math.atan2(-(math.cos(a) * v), math.sin(a) * v + 1400 * tt)), a=clamp(1.5 - tt))
+        put(im, half(420), cx - 215 * q, cy - 20 + 10 * math.sin(t * 2.2), rot=20 * q + 3 * math.sin(t * 2), sh=24)
+        put(im, half(420), cx + 215 * q, cy - 20 + 10 * math.sin(t * 2.2 + 1), rot=-20 * q - 3 * math.sin(t * 2), sh=24)
+        g = pop(t, c1 + .4, .32)
+        TS(im, "BİZİM BİRİNCİMİZ", 540, 470, 70, (252, 244, 222), a=clamp((u - .2) / .25))
         if g > 0:
-            sparkle(im, 540, 1215, t, n=9, R=330, seed=2)
-            put(im, badge(1), 250, 1215, s=2.1 * g, sh=5); T(im, "Çeşmekolu", 600, 1205, 96, RUST, LORA, scale=g)
-            T(im, "bizim birincimiz", 600, 1292, 36, (110, 84, 56), LORAI, a=clamp((u - .9) / .3))
-    mark(im); return im
+            sparkle(im, 540, 610, t, n=10, R=420, seed=2)
+            put(im, badge(1), 96, 606, s=2.2 * g, sh=6); TS(im, "ÇEŞMEKOLU", 610, 600, 120, (255, 206, 84), scale=g)
+    T(im, "Çizim temsilidir", 540, 1690, 24, (230, 214, 184), LORAI, a=.9); return im
 def s_yer(t):
     k = 'yer'; p = ease(t / 1.6); im, m = cam(LUL[0], LUL[1] + 40 * (1 - p), .42 + .5 * p + .012 * t); im = vig(im)
     banner(im, "Çeşmekolu", "Lüleburgaz · Kırklareli", y=320, sz=90)
@@ -272,4 +284,17 @@ def s_cta(t):
         if t > c1 + .9: chip(im, "Takip et · @ciceklipatikalar", 540, 1612, 36, pop(t, c1 + .9, .25), fill=PAPER, tc=INK)
     T(im, "Müzik özgündür · Çizim temsilidir", 540, 1690, 24, (92, 70, 44), LORAI, a=.9); return im
 F = {'hook': s_hook, 'yer': s_yer, 'kamyon': s_kamyon, 'azal': s_azal, 'diger': s_diger, 'cta': s_cta}
-exec(open('/home/claude/masal4/common.py').read())
+_c = open('/home/claude/masal4/common.py').read(); exec(_c.split("if __name__")[0])
+_RING = {}
+def frame(now):
+    for i, k in enumerate(ORDER):
+        a, b = TM[k]['start'], TM[k]['end']
+        if now < b or i == len(ORDER) - 1:
+            im = F[k](now - a)
+            if i and now - a < .42:
+                p = ease((now - a) / .42); prev = F[ORDER[i - 1]](now - TM[ORDER[i - 1]]['start']); r = 40 + p * 1250
+                mk = Image.new('L', (W, H), 0); d = ImageDraw.Draw(mk); d.ellipse([540 - r, 960 - r, 540 + r, 960 + r], fill=255)
+                im = Image.composite(im, prev, mk); d = ImageDraw.Draw(im)
+                d.ellipse([540 - r - 26, 960 - r - 26, 540 + r + 26, 960 + r + 26], outline=DARKG, width=26); d.ellipse([540 - r, 960 - r, 540 + r, 960 + r], outline=(236, 244, 208), width=12)
+            M.caption(im, now); return im
+exec("if __name__" + _c.split("if __name__")[1])
