@@ -29,7 +29,7 @@ def mk(i,lines,title):
 def s_cta(t):
     k='cta'; im=base(t,5,None,"Hangisinden başlardın?")
     if t>=ct(k,1)-.05: chip(im,"Yorumda yaz · etiketle",540,1220,46,back((t-ct(k,1)+.05)/.25))
-    if t>=ct(k,2)-.05: chip(im,"Sıradaki seri: Balkan Rotası",540,1320,42,back((t-ct(k,2)+.05)/.25),fill=GREEN)
+    if t>=ct(k,2)-.05: chip(im,"Sıradaki seri: Trakya'nın Oyunları",540,1320,42,back((t-ct(k,2)+.05)/.25),fill=GREEN)
     v=ve-TM[k]['start']
     if t>v+.2: T(im,"Takip et · @ciceklipatikalar",540,1400,42,INK,LORA,a=clamp((t-v-.2)/.5))
     mark(im,"Müzik özgündür · Çizim temsilidir"); return im

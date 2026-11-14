@@ -42,3 +42,8 @@ HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) plan
 - Müzik: kullanıcının izinle verdiği düğün kaydı (Kasap_havası.mp4, 58. saniyeden). Kayıt sahibi/yer videoda ANILMAYACAK (kullanıcı isteği) — ne anlatımda ne ekranda.
 - Yapı: kanca → ad kökeni (kasaplar loncası) → İstanbul/Doğu Trakya → Zorba/sirtaki → Eski Kasap (Kırklareli) → tempo → TRT 304, 7/8 → davul-zurna → 14 sn dans arası → İlçe Ligi CTA.
 - Yayın tarihi henüz belirlenmedi; yayından önce bağımsız bilgi denetimi şart.
+
+### 14 Kasım — Sıra değişikliği (kullanıcı kararı)
+- Trakya'nın Oyunları serisi Balkan Rotası'ndan ÖNCE yayınlanacak. Balkan Rotası seri bitince başlar.
+- Saklı Doğa finali (19 Kasım) kapanışı "Sıradaki seri: Trakya'nın Oyunları" olarak yenilendi (reels/sakli-5-v2.mp4).
+- Kalan 3 Metricool hakkı: Oyunlar Bölüm 1–3 (20–22 Kasım 20.30). Sonrası elle yükleme.

@@ -10,5 +10,5 @@ SEGS={
 "d5":[("5. İğneada: suyun içindeki orman",["Beş. İğneada. Suyun içindeki orman."],["iğneada","suyun","orman"],1.28,.45)],
 "cta":[("Sen hangisinden başlardın?",["Sen hangisinden başlardın?"],["hangisinden","başlardın"],1.3,.2),
        ("Yorumda yaz, gideceğin kişiyi etiketle.",["Yorumda yaz, gideceğin kişiyi etiketle."],["yorumda","etiketle"],1.28,.3),
-       ("Sıradaki seri: Balkan Rotası. Takip et.",["Sıradaki seri, Balkan Rotası. Takip et."],["sıradaki","balkan","takip"],1.28,.1)],
+       ("Sıradaki seri: Trakya'nın Oyunları. Takip et.",["Sıradaki seri, Trakya'nın Oyunları. Takip et."],["sıradaki","oyunları","takip"],1.28,.1)],
 }
