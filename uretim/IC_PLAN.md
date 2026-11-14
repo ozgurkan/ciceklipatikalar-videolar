@@ -52,3 +52,7 @@ HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) plan
 - 15 Kasım 18.00 Metricool: Lezzet ek bölüm "Trakya'nın en iyi sucuğu hangi köyün?" (reels/lezzet-ek-sucuk.mp4, 74 sn, 6 durak, il yarışı + sahan/ızgara tartışması). uuid 4264650198234384713.
 - 15 Kasım: 13.00 rota finali, 18.00 sucuk, 20.30 Saklı Doğa 1.
 - HAK NOTU: Kasım'da kalan Metricool hakkı 1 → Oyunlar Bölüm 2 (21 Kasım). Bölüm 3 (22 Kasım) ve sonrası elle yükleme.
+
+### 14 Kasım 23.50 — Takvim kaydırıldı (kullanıcı isteği: sucuk finalden önce, 20.30'da)
+- 15 Kasım 20.30 sucuk · 16 Kasım 13.00 Lezzet finali + 20.30 Saklı Doğa 1 (Uzunköprü) · 17 Saklı 2 (Kıyıköy) · 18 Saklı 3 (İğneada) · 19 Saklı 4 (Gala) · 20 Saklı finali · 21 Oyunlar Bölüm 1 Kasap (hepsi 20.30).
+- Kalan 1 Metricool hakkı → Oyunlar Bölüm 2 (22 Kasım). Bölüm 3 (23 Kasım) ve sonrası elle yükleme.
