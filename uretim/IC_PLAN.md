@@ -31,9 +31,9 @@ HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) plan
 - Peynir videosundan dersler (12 Kasım, 24 saatte 31 bin+): "hangisi?" rekabet sorusu, 30-40 sn süre, yeni çizim kalitesi (uretim/lezzet/art.py). Ortalama izlenme 13 sn; açılış ilk 3 saniyede sert olmalı.
 
 ## Trakya'nın Oyunları (halk oyunları serisi) — 14 Kasım notları
-- Plan: en az 10 bölüm (Karşılama, Karşılama/hora, Kasap, Kırk Haydut, Zigoş, İzzet Hoca, Sülüman Ağa, oyun adları, Debreli Hasan, Tekirdağ köy oyunları, Kakava-Hıdrellez, final Oyun Haritası). İlçe Ligi: her bölüm "ilçeni yaz", sabit yorumda ilçe skoru. HENÜZ ÜRETİME BAŞLANMADI, kullanıcı "başla" demeden üretilmez.
+- Plan: en az 10 bölüm (Karşılama, Karşılama/hora, Kasap, Kırk Haydut, Zigoş, İzzet Hoca, Sülüman Ağa, oyun adları, Debreli Hasan, Tekirdağ köy oyunları, Kakava-Hıdrellez, final Oyun Haritası). İlçe Ligi: her bölüm "ilçeni yaz", sabit yorumda ilçe skoru. Seri onaylandı (14 Kasım), Bölüm 1 Kasap hazır ve 20 Kasım 20.30 planlı.
 - Süre: her bölüm EN AZ 1 dakika (kullanıcı kararı).
-- Müzik: sentez değil gerçek yöresel müzik. Kasap bölümü: Selahattin Tiryaki'nin YouTube kaydı "Kasap havası" (Gemlik Büyükkumla köyü düğün kasabı) — kullanıcı izin aldı, ses dosyasını gönderecek. Ekranda kaynak: "Müzik: Gemlik Büyükkumla köyü düğün kasabı · Kayıt: Selahattin Tiryaki (izinle)". YouTube'dan indirme yapılmaz; dosya kullanıcıdan gelir.
+- Müzik: sentez değil gerçek yöresel müzik. Kasap bölümü: Selahattin Tiryaki'nin YouTube kaydı "Kasap havası" (Gemlik Büyükkumla köyü düğün kasabı) — kullanıcı izin aldı, ses dosyasını gönderecek. (GÜNCEL: kayıt sahibi/yer videoda anılmaz.) YouTube'dan indirme yapılmaz; dosya kullanıcıdan gelir.
 - Yedek müzik: TRT THM Rep. 304 "Trakya Kasap Havası" (anonim, derleyen Emin Aldemir) notası çözüldü, oyun/kasap/kmusic2.py.
 - Örnek çalışma dosyaları: /home/claude/oyun/kasap (r.py, spec.py, kmusic2.py).
 
