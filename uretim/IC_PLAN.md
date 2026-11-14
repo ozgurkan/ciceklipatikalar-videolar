@@ -47,3 +47,8 @@ HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) plan
 - Trakya'nın Oyunları serisi Balkan Rotası'ndan ÖNCE yayınlanacak. Balkan Rotası seri bitince başlar.
 - Saklı Doğa finali (19 Kasım) kapanışı "Sıradaki seri: Trakya'nın Oyunları" olarak yenilendi (reels/sakli-5-v2.mp4).
 - Kalan 3 Metricool hakkı: Oyunlar Bölüm 1–3 (20–22 Kasım 20.30). Sonrası elle yükleme.
+
+### 14 Kasım gece — Sucuk ek bölümü
+- 15 Kasım 18.00 Metricool: Lezzet ek bölüm "Trakya'nın en iyi sucuğu hangi köyün?" (reels/lezzet-ek-sucuk.mp4, 74 sn, 6 durak, il yarışı + sahan/ızgara tartışması). uuid 4264650198234384713.
+- 15 Kasım: 13.00 rota finali, 18.00 sucuk, 20.30 Saklı Doğa 1.
+- HAK NOTU: Kasım'da kalan Metricool hakkı 1 → Oyunlar Bölüm 2 (21 Kasım). Bölüm 3 (22 Kasım) ve sonrası elle yükleme.
