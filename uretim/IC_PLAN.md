@@ -36,3 +36,9 @@ HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) plan
 - Müzik: sentez değil gerçek yöresel müzik. Kasap bölümü: Selahattin Tiryaki'nin YouTube kaydı "Kasap havası" (Gemlik Büyükkumla köyü düğün kasabı) — kullanıcı izin aldı, ses dosyasını gönderecek. Ekranda kaynak: "Müzik: Gemlik Büyükkumla köyü düğün kasabı · Kayıt: Selahattin Tiryaki (izinle)". YouTube'dan indirme yapılmaz; dosya kullanıcıdan gelir.
 - Yedek müzik: TRT THM Rep. 304 "Trakya Kasap Havası" (anonim, derleyen Emin Aldemir) notası çözüldü, oyun/kasap/kmusic2.py.
 - Örnek çalışma dosyaları: /home/claude/oyun/kasap (r.py, spec.py, kmusic2.py).
+
+### 14 Kasım — Bölüm 1 kararı
+- Trakya'nın Oyunları serisinin **1. bölümü: Kasap** (reels/oyun-1-kasap.mp4, 71 sn). Kullanıcı onayladı.
+- Müzik: kullanıcının izinle verdiği düğün kaydı (Kasap_havası.mp4, 58. saniyeden). Kayıt sahibi/yer videoda ANILMAYACAK (kullanıcı isteği) — ne anlatımda ne ekranda.
+- Yapı: kanca → ad kökeni (kasaplar loncası) → İstanbul/Doğu Trakya → Zorba/sirtaki → Eski Kasap (Kırklareli) → tempo → TRT 304, 7/8 → davul-zurna → 14 sn dans arası → İlçe Ligi CTA.
+- Yayın tarihi henüz belirlenmedi; yayından önce bağımsız bilgi denetimi şart.
