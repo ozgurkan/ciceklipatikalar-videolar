@@ -1,0 +1,22 @@
+OUTRO=3.5
+SEGS={
+"hook":[("Trakya'nın en iyi tatlısı hangisi?",["Trakya'nın en iyi tatlısı hangisi?"],["trakya","tatlısı","hangisi"],1.2,.25),
+        ("Bu yıl Tekirdağ'daki bir yarışmada otuz iki tatlı yarıştı.",["Bu yıl Tekirdağ'daki bir yarışmada otuz iki tatlı yarıştı."],["tekirdağ","yarışmada","otuz","yarıştı"],1.24,.12),
+        ("Birinciliği Hayrabolu tatlısı aldı.",["Birinciliği Hayrabolu tatlısı aldı."],["birinciliği","hayrabolu","tatlısı","aldı"],1.24,.4)],
+"hayra":[("Hayrabolu tatlısı bin dokuz yüz yetmiş ikide Kadı Göbeği adıyla üretilmeye başlandı.",["Hayrabolu tatlısı bin dokuz yüz yetmiş ikide Kadı Göbeği adıyla üretilmeye başlandı."],["hayrabolu","kadı","göbeği","üretilmeye"],1.25,.2),
+         ("Tuzsuz peynir ve irmikle yapılıyor, şerbetle tatlanıyor.",["Tuzsuz peynir ve irmikle yapılıyor, şerbetle tatlanıyor."],["tuzsuz","peynir","irmikle","şerbetle"],1.25,.4)],
+"helva":[("Tekirdağ peynir helvası da coğrafi işaretli.",["Tekirdağ peynir helvası da coğrafi işaretli."],["tekirdağ","peynir","helvası","işaretli"],1.25,.2),
+         ("Yazın isteyen dondurmayla yiyor.",["Yazın isteyen dondurmayla yiyor."],["yazın","isteyen","dondurmayla","yiyor"],1.25,.4)],
+"badem":[("Edirne badem ezmesi Osmanlı'dan kalma bir lezzet.",["Edirne badem ezmesi Osmanlı'dan kalma bir lezzet."],["edirne","badem","osmanlı","lezzet"],1.25,.2),
+         ("Badem ve şekerle yapılıyor, coğrafi işaretli.",["Badem ve şekerle yapılıyor, coğrafi işaretli."],["badem","şekerle","coğrafi","işaretli"],1.25,.4)],
+"misk":[("Otuz dokuz baharat ve bitkiyle yapılan deva-i misk helvası da Edirne'nin.",["Otuz dokuz baharat ve bitkiyle yapılan deva-i misk helvası da Edirne'nin."],["otuz","baharat","misk","edirne"],1.25,.4)],
+"brakana":[("Kırklareli'nin cevabı da var: Babaeski Büyükmandıra'nın brakana tatlısı.",["Kırklareli'nin cevabı da var: Babaeski Büyükmandıra'nın brakana tatlısı.","Kırklareli'nin cevabı da var, Babaeski Büyükmandıra'nın brakana tatlısı."],["kırklareli","cevabı","büyükmandıra","brakana"],1.25,.2),
+            ("İki bin yirmi üçte tescillendi, kökeni beldeye yerleşen Pomaklara dayanıyor.",["İki bin yirmi üçte tescillendi, kökeni beldeye yerleşen Pomaklara dayanıyor."],["tescillendi","kökeni","yerleşen","pomaklara"],1.25,.15),
+            ("Düğünlerde ve bayramlarda yapılıyor.",["Düğünlerde ve bayramlarda yapılıyor."],["düğünlerde","bayramlarda","yapılıyor"],1.25,.4)],
+"tablo":[("Bu videoda Tekirdağ ve Edirne'den ikişer, Kırklareli'nden bir tatlı var.",["Bu videoda Tekirdağ ve Edirne'den ikişer, Kırklareli'nden bir tatlı var."],["videoda","edirne","ikişer","kırklareli"],1.26,.2),
+         ("Hangi il kazanır?",["Hangi il kazanır?"],["hangi","il","kazanır"],1.27,.4)],
+"kavga":[("Bir de asıl kavga var:",["Bir de asıl kavga var."],["asıl","kavga","var"],1.27,.15),
+         ("peynir helvası sıcak mı yenir, soğuk mu?",["peynir helvası sıcak mı yenir, soğuk mu?","Peynir helvası, sıcak mı yenir, soğuk mu?"],["helvası","sıcak","yenir","soğuk"],1.25,.35)],
+"cta":[("Sence en iyi tatlı hangisi?",["Sence en iyi tatlı hangisi?"],["sence","tatlı","hangisi"],1.27,.2),
+       ("Yorumlara yaz, tatlıcı arkadaşını etiketle.",["Yorumlara yaz, tatlıcı arkadaşını etiketle."],["yorumlara","tatlıcı","arkadaşını","etiketle"],1.26,.1)],
+}
