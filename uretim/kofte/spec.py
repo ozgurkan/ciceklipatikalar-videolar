@@ -1,0 +1,21 @@
+OUTRO=3.5
+SEGS={
+"hook":[("Trakya'da köfte yüzünden iki belediye başkanı tatlı tatlı atıştı.",["Trakya'da köfte yüzünden iki belediye başkanı tatlı tatlı atıştı."],["köfte","yüzünden","başkanı","atıştı"],1.2,.25),
+        ("Peki en iyi köfte hangi şehrin?",["Peki en iyi köfte hangi şehrin?"],["peki","köfte","hangi","şehrin"],1.24,.4)],
+"kavga":[("İki bin on sekizde Kırklareli'nin başkanı kendi köftesini öne çıkardı.",["İki bin on sekizde Kırklareli'nin başkanı kendi köftesini öne çıkardı."],["kırklareli","başkanı","kendi","köftesini"],1.25,.2),
+         ("Edirne'nin başkanı da Edirne köftesiyle cevap verdi.",["Edirne'nin başkanı da Edirne köftesiyle cevap verdi."],["edirne","başkanı","köftesiyle","cevap"],1.25,.4)],
+"tek":[("Tekirdağ köftesi iki bin yirmide coğrafi işaret aldı.",["Tekirdağ köftesi iki bin yirmide coğrafi işaret aldı."],["tekirdağ","köftesi","coğrafi","işaret"],1.25,.4)],
+"ahmet":[("Lüleburgaz'ın Ahmetbey köftesi de bu yıl tescillendi.",["Lüleburgaz'ın Ahmetbey köftesi de bu yıl tescillendi."],["lüleburgaz","ahmetbey","köftesi","tescillendi"],1.25,.2),
+         ("Anlatılana göre değirmen sırası bekleyenler için doğmuş.",["Anlatılana göre değirmen sırası bekleyenler için doğmuş."],["anlatılana","değirmen","bekleyenler","doğmuş"],1.25,.4)],
+"uzun":[("Uzunköprü köftesi geçen yıl tescil aldı, yalnızca dana etiyle yapılıyor.",["Uzunköprü köftesi geçen yıl tescil aldı, yalnızca dana etiyle yapılıyor."],["uzunköprü","tescil","dana","yapılıyor"],1.25,.4)],
+"pabuc":[("Hayrabolu Çerkezmüsellim'de köfte pabuç şeklinde.",["Hayrabolu Çerkezmüsellim'de köfte pabuç şeklinde.","Hayrabolu, Çerkezmüsellim'de köfte pabuç şeklinde."],["hayrabolu","çerkez","pabuç","şeklinde"],1.25,.4)],
+"satir":[("Keşan'da et satırla kıyılıyor, tescilli tarifinde baharat yok.",["Keşan'da et satırla kıyılıyor, tescilli tarifinde baharat yok."],["keşan","satırla","tarifinde","baharat"],1.25,.2),
+         ("Lüleburgaz Yenibedir'de ise anlatılana göre düğünlerde köfte satırla kıyılarak yapılıyor.",["Lüleburgaz Yenibedir'de ise anlatılana göre düğünlerde köfte satırla kıyılarak yapılıyor.","Lüleburgaz, Yenibedir'de ise, anlatılana göre düğünlerde köfte satırla kıyılarak yapılıyor."],["yenibedir","düğünlerde","satırla","kıyılarak"],1.24,.4)],
+"tablo":[("Bu videoda Kırklareli ve Edirne'den üçer,",["Bu videoda Kırklareli ve Edirne'den üçer,"],["videoda","kırklareli","edirne","üçer"],1.26,.12),
+         ("Tekirdağ'dan iki aday var.",["Tekirdağ'dan iki aday var."],["tekirdağ","iki","aday"],1.27,.2),
+         ("Hangi il kazanır?",["Hangi il kazanır?"],["hangi","il","kazanır"],1.27,.4)],
+"piyaz":[("Bir de asıl kavga var:",["Bir de asıl kavga var."],["asıl","kavga","var"],1.27,.15),
+         ("köfte piyazla mı, ekmek arası mı?",["köfte piyazla mı, ekmek arası mı?","Köfte, piyazla mı, ekmek arası mı?"],["köfte","piyazla","ekmek","arası"],1.25,.35)],
+"cta":[("Sence en iyi köfte hangi şehrin?",["Sence en iyi köfte hangi şehrin?"],["sence","köfte","hangi","şehrin"],1.27,.2),
+       ("Şehrini yaz, hemşehrine gönder.",["Şehrini yaz, hemşehrine gönder."],["şehrini","yaz","hemşehrine","gönder"],1.26,.1)],
+}
