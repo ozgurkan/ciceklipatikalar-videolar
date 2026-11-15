@@ -62,3 +62,5 @@ HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) plan
 - Eski rota finali (uuid -3087580365008188087) Metricool'da TASLAK, 22 Kasım; yeni final yapılacak.
 - Saklı Doğa 23–27 Kasım (Uzunköprü, Kıyıköy, İğneada, Gala, final) · Oyunlar Bölüm 1 Kasap 28 Kasım.
 - Kalan 1 Metricool hakkı → 16 Kasım köfte. Diğer yeni lezzet videoları elle yükleme.
+- 16 Kasım köfte: Metricool OTOMATİK (son hak), uuid 3752205168767812516.
+- 17 Kasım tatlı (Brakana eklendi): Metricool HATIRLATMALI (autoPublish=false → telefona bildirim), uuid 7905958616879612453. Kalan lezzet videoları da bu yolla.
