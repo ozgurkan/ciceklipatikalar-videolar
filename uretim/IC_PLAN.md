@@ -64,3 +64,13 @@ HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) plan
 - Kalan 1 Metricool hakkı → 16 Kasım köfte. Diğer yeni lezzet videoları elle yükleme.
 - 16 Kasım köfte: Metricool OTOMATİK (son hak), uuid 3752205168767812516.
 - 17 Kasım tatlı (Brakana eklendi): Metricool HATIRLATMALI (autoPublish=false → telefona bildirim), uuid 7905958616879612453. Kalan lezzet videoları da bu yolla.
+
+### 15 Kasım 16.40 — Lezzet uzatması tamamlandı (hepsi Metricool HATIRLATMALI, 20.30)
+- 18 Kas Boza vs hardaliye (reels/lezzet-ek-boza.mp4) uuid -4848933762681189803
+- 19 Kas Kuzu ve ciğer sarma, Edirne vs Çorlu (lezzet-ek-et.mp4) uuid 7262063103293935293
+- 20 Kas Göçmen börekleri: dızmana, tikvenik (lezzet-ek-borek.mp4) uuid -4344728492205847777
+- 21 Kas İpsala pirinci, AB tescili (lezzet-ek-pirinc.mp4) uuid -3333298425980042483
+- 22 Kas Final: lezzet başkenti (lezzet-ek-final.mp4); eski rota finali taslağı bununla değiştirildi, uuid -3087580365008188087
+- Final sayıları TÜRKPATENT portalından il filtresiyle sayıldı (15 Kasım 2026): Edirne 15, Tekirdağ 15, Kırklareli 10 (el sanatları dahil). Haberlerdeki 14/8 sayıları eski.
+- Kapanış ekranlarında 1-2-3 podyum kullanılmaz (sıralama varmış gibi görünüyor).
+- Betikler: uretim/lezzet/ek-{bz,et,br,pr,fn}/
