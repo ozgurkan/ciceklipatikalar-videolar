@@ -56,3 +56,9 @@ HAK NOTU (7 Kasım): 10 Kasım 09.05'e ek bir anma videosu (reels/10-kasim) plan
 ### 14 Kasım 23.50 — Takvim kaydırıldı (kullanıcı isteği: sucuk finalden önce, 20.30'da)
 - 15 Kasım 20.30 sucuk · 16 Kasım 13.00 Lezzet finali + 20.30 Saklı Doğa 1 (Uzunköprü) · 17 Saklı 2 (Kıyıköy) · 18 Saklı 3 (İğneada) · 19 Saklı 4 (Gala) · 20 Saklı finali · 21 Oyunlar Bölüm 1 Kasap (hepsi 20.30).
 - Kalan 1 Metricool hakkı → Oyunlar Bölüm 2 (22 Kasım). Bölüm 3 (23 Kasım) ve sonrası elle yükleme.
+
+### 15 Kasım 14.55 — Lezzet uzatması (kullanıcı onayladı)
+- 16–22 Kasım her gün 20.30: Lezzet Rotası 7 yeni bölüm. Sıra: 16 Köfte Savaşı (Yenibedir düğün satır köftesi dahil; kaynak yok → köylü anlatısı, ayrıntı kullanıcıdan bekleniyor) · 17 Tatlı yarışı · 18 Kış içeceği (Velimeşe bozası vs Kırklareli hardaliyesi) · 19 Et (Keşan satır et vs Kırklareli kıvırcık) · 20 Göçmen böreği · 21 İpsala pirinci/pilav · 22 Final: Lezzet başkenti (il tescil sayıları, Türk Patent'ten doğrula).
+- Eski rota finali (uuid -3087580365008188087) Metricool'da TASLAK, 22 Kasım; yeni final yapılacak.
+- Saklı Doğa 23–27 Kasım (Uzunköprü, Kıyıköy, İğneada, Gala, final) · Oyunlar Bölüm 1 Kasap 28 Kasım.
+- Kalan 1 Metricool hakkı → 16 Kasım köfte. Diğer yeni lezzet videoları elle yükleme.
